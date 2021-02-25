@@ -6,8 +6,11 @@ You can find this number by browser-inspecting the profile image. You'll see it 
 <div id="s-lib-profile-image-1234" class="s-lib-profile-div s-lib-profile-center s-lib-profile-image">...</div>
 The "1234" number should be swapped into the first line of the function. 
 
+last updated: 2021-02-25, ken irwin
 */
 $(function () {
   let profileId = '1234';
-  AppendEmail(profileId);
+  if (typeof AppendEmail == 'function') {
+    AppendEmail(profileId);
+  }
 });
