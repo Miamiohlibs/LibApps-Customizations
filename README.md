@@ -15,3 +15,16 @@
 ### Alternative email address option
 
 The `email-link-widget.js` file has a standalone version of the script not reliant on the page header, but if there's ever a need to change the script, it will have to be changed separately from the centralized version of the file.
+
+### Use JSDelivr as CDN
+
+GitHub address...
+https://github.com/Miamiohlibs/LibApps-Customizations/blob/main/bs5test/libguides.css
+
+becomes...
+https://cdn.jsdelivr.net/gh/Miamiohlibs/LibApps-Customizations@main/bs5test/libguides.css
+
+pattern...
+https://cdn.jsdelivr.net/gh/user-org-name/repo-name@branch-name/if-folder/file-name.css
+
+[Github to JSDelivr tool](https://www.jsdelivr.com/github)
