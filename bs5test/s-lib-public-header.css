@@ -1677,10 +1677,10 @@ tr img {
 .s-lib-profile-email a {
     font-size: 1.6em
 }
-
+/*
 .s-lib-profile-div a i {
     disabled_color: #555
-}
+}*/
 
 .s-lib-profile-div a:focus i,
 .s-lib-profile-div a:hover i {
@@ -1692,7 +1692,7 @@ tr img {
     margin: 5px;
     display: inline-block;
     vertical-align: top;
-    x_height: 150px;
+   /* x_height: 150px;*/
     width: 170px
 }
 

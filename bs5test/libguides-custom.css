@@ -78,211 +78,14 @@
     }
 
     /**
- * 2.0 Libraries Header and Navigation Bar
+ * 2.0 Libraries Header and Navigation Bar and Google Site Search
+ *  SEE ADJUSTED-HEADER-STYLES
  * ----------------------------------------------------------------------------
  */
 
-    /*------CUSTOM site-wide Navigation and Footer CSS STARTS HERE----------*/
-    /* --- Accessibiity focus ---- */
-    :focus {
-        outline: auto 2px Highlight !important;
-        outline: auto 5px -webkit-focus-ring-color !important;
-    }
+   
 
-    /* Reset */
-    *,
-    *:after,
-    *:before {
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-    }
-
-    /* Super Nav Menu */
-    #supernav li a {
-        color: white;
-        font-weight: 200;
-    }
-
-    #supernav li:nth-child(-n+3)::after {
-        content: '/';
-        color: white;
-        padding: 0.35rem;
-    }
-
-    #site-logo {
-        min-width: 220px;
-        max-width: 400px;
-    }
-
-    /**
- * 2.1 Google website search
- * ----------------------------------------------------------------------------*/
-    /* Google Search inbox */
-    td.gsc-input,
-    td.gsc-search-button {
-        border: 0px !important;
-        padding: 0 !important;
-    }
-
-    .gsib_a {
-        padding: 0px !important;
-    }
-
-    td.gsib_b {
-        display: none;
-    }
-
-    div.ad,
-    div.adStd {
-        display: none;
-    }
-
-    div.gsc-adBlock {
-        display: none !important;
-    }
-
-    form.gsc-search-box {
-        font-size: 22px !important;
-    }
-
-    table.gsc-input {
-        margin-bottom: 0 !important;
-    }
-
-    /* to kill ads */
-    .gsc-control-cse {
-        background-color: none;
-        border: none !important;
-        background-color: rgba(255, 255, 255, 0) !important;
-        padding: 0 1em !important;
-    }
-
-    div.gsc-input-box {
-        border: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    #googleSCHLsearch {
-        background-color: #C3142D;
-        color: white;
-    }
-
-    #gSearch {
-        width: 100%;
-        min-width: 180px;
-        background-color: #C3142D;
-        border: 0px !important;
-    }
-
-    .gsc-input input[name="search"] {
-        height: 2em !important;
-        outline: 1px solid white !important;
-        outline-offset: 2px !important;
-    }
-
-    button.gsc-search-button,
-    .gsc-search-button-v2 {
-        background-color: #C3142D !important;
-        margin-left: 0.5rem !important;
-        border-color: #C3142D !important;
-        padding: 0px 8px !important;
-        outline: 1px solid white !important;
-        outline-offset: 2px !important;
-    }
-
-    button.gsc-search-button :hover,
-    .gsc-search-button-v2 :hover {
-        background-color: #C3142D !important;
-    }
-
-    /* Diagonal stripes on navigation background */
-    .module {
-        background: white;
-        position: absolute;
-        z-index: 999;
-        width: 100%;
-    }
-
-    .module-divid {
-        height: 40px;
-        background: white;
-    }
-
-    .stripe-1 {
-        background-color: #C3142D;
-    }
-
-    .stripe-divid {
-        background: repeating-linear-gradient(-45deg, white, white 2px, #B61F2E 1px, #B61F2E 7px);
-        opacity: 0.2;
-    }
-
-    /* Main Nav Menu */
-    #cornerImgAlumni {
-        background-image: url("https://www.lib.miamioh.edu/images/CornerImages/AlumniHallCornerImg.png");
-        background-position: left bottom !important;
-    }
-
-    #cornerImgKing {
-        background-image: url("https://www.lib.miamioh.edu/images/CornerImages/KingLibraryCornerImg.png");
-    }
-
-    #cornerImgArt {
-        background-image: url("https://www.lib.miamioh.edu/images/CornerImages/LibraryCornerImg.png");
-    }
-
-    #main3nav {
-        max-width: 1120px;
-    }
-
-    #main3nav .dropdown-menu {
-        background-repeat: no-repeat;
-        background-size: 50%;
-        background-position: right bottom;
-        border-bottom: #C3142D 1px solid;
-        box-shadow: 0 0.25rem 1.25rem 0 rgba(0, 0, 0, 0.2);
-    }
-
-    @media screen and (min-width: 576px) {
-        #main3nav .dropdown-menu {
-            width: 98%;
-            left: auto;
-            right: 1%;
-        }
-    }
-
-    #main3nav .dropdown-menu>div {
-        margin-bottom: 1.25rem;
-    }
-
-    .navbar-light .navbar-toggler {
-        color: rgba(0, 0, 0, 0.5);
-        border-color: rgba(0, 0, 0, 0.1);
-    }
-
-    .navbar-toggler {
-        background-color: white !important;
-    }
-
-    .dropdown-menu li a {
-        line-height: 1.35em;
-        margin-bottom: 0.75em;
-        display: block;
-        color: #333;
-        white-space: normal;
-        margin-left: -0.5em;
-        padding: 0 0.25em 0 0.5em;
-    }
-
-    .dropdown-menu li a:hover {
-        text-decoration: none;
-        color: white;
-        background-color: #C3142D !important;
-        padding-right: 5px;
-    }
-
+  
     /**
  * 2.2 footer styles
  * ----------------------------------------------------------------------------*/
@@ -379,10 +182,10 @@
   border-radius: 3px;
   padding: 0.1em 0.5em 0.5em 0.25em;
   margin: 0.75em 0 0em 0;
-}*/
+}
 
 
-    #s-lg-guide-search-box {}
+    #s-lg-guide-search-box {} */
 
     ul.nav-stacked li {
         margin: 0.5em 0;
@@ -472,11 +275,12 @@
         padding: 10px 20px;
     }
 
-    ul#s-lg-page-prevnext.pager li.next a,
+ /*   ul#s-lg-page-prevnext.pager li.next a,
     ul#s-lg-page-prevnext.pager li.previous a {
-        /* background: #B61E2E;
-  color: #fff; */
+         background: #B61E2E;
+  color: #fff; 
     }
+    */
 
     ul#s-lg-page-prevnext.pager li.next a:hover,
     ul#s-lg-page-prevnext.pager li.previous a:hover {
@@ -542,7 +346,7 @@
     }
 
 
-    #s-lg-az-filter-cols {}
+/*    #s-lg-az-filter-cols {} */
 
     #col-vendors {
         display: none;
