@@ -221,16 +221,16 @@
 
     /* Main Nav Menu */
     #cornerImgAlumni {
-        background-image: url("../../images/CornerImages/AlumniHallCornerImg.png");
+        background-image: url("https://www.lib.miamioh.edu/images/CornerImages/AlumniHallCornerImg.png");
         background-position: left bottom !important;
     }
 
     #cornerImgKing {
-        background-image: url("../../images/CornerImages/KingLibraryCornerImg.png");
+        background-image: url("https://www.lib.miamioh.edu/images/CornerImages/KingLibraryCornerImg.png");
     }
 
     #cornerImgArt {
-        background-image: url("../../images/CornerImages/LibraryCornerImg.png");
+        background-image: url("https://www.lib.miamioh.edu/images/CornerImages/LibraryCornerImg.png");
     }
 
     #main3nav {
