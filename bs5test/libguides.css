@@ -833,7 +833,9 @@
         display: none !important;
     }
 
-    /---Media queries for A-Z page---/ @media screen and (max-width: 991px) {
+    /* ---Media queries for A-Z page --- */ 
+    
+    @media screen and (max-width: 991px) {
         #col-subjects,
         #col-types,
         #col-search {
