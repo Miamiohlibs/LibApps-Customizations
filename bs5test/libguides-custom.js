@@ -12,7 +12,9 @@
      *   this function can be called from the "other widget code" section
      *   to append a users email address to the contact box (in addition to
      *   the "Email Me" button)
-     */
+     * --------------------------------------- 
+    */
+
     const AppendEmail = (profileId) => {
         let thisProfile = $('#s-lib-profile-' + profileId);
         let emailAddress = $(thisProfile)
@@ -35,6 +37,7 @@
     /* 
      * 0.2 - Google Custom Search
      * adds Google Custom Search box to header 
+     * * ---------------------------------------
      */
 
     $(function () {
