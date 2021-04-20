@@ -224,28 +224,3 @@ button.gsc-search-button :hover, .gsc-search-button-v2 :hover { background-color
 .site-nav .dropdown-menu li a { line-height: 1.35em; margin-bottom: 0.75em; display: block; color: #333; white-space: normal; margin-left: -0.5em; padding: 0 0.25em 0 0.5em; }
 
 .site-nav .dropdown-menu li a:hover { text-decoration: none; color: white; background-color: #C3142D !important; padding-right: 5px; }
-
-/*---Footer Style---*/
-.footer-container { min-width: 850px; }
-
-.footer { font-family: 'Raleway', sans-serif; color: white; }
-
-.footerTitle { text-transform: uppercase; }
-
-.footer address a, .footer p a { color: white; padding: 0 0.2rem; }
-
-.footer address a:hover, .footer p a:hover { text-decoration: none; color: #941728 !important; background-color: white; }
-
-.footer li { font-family: 'Raleway', sans-serif; color: white; list-style: none !important; margin-left: -1.825em; }
-
-.footer li a { color: white; padding: 0 0.2rem; }
-
-.footer li a:hover { text-decoration: none; color: #941728 !important; background-color: white; }
-
-h2.footer-header, .footer-header.h2 { font-size: 1em !important; }
-
-li.title { line-height: 1.5em; margin: 1em 0; }
-
-/* -- icon to signify it opens in new window -- */
-
-/*# sourceMappingURL=styleNaviAndFooter.css.map */
