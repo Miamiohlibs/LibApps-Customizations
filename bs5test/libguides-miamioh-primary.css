@@ -37,10 +37,16 @@
         line-height: 1.5;
     }
 
-    a {
-        font-weight: bold;
-        color: #007B89;
-    }
+/** Links */
+a { color: #007B89; text-decoration: none; }
+
+a:visited { color: #007B89; }
+
+a:hover { color: #7e0d1d; text-decoration: underline; }
+
+.social-media-list a:hover { text-decoration: none; }
+
+.social-media-list a:hover .username { text-decoration: underline; }
 
     :focus {
         outline: auto 2px Highlight !important;
