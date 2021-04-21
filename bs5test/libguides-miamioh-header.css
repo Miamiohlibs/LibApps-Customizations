@@ -550,7 +550,7 @@
   padding: 0.35rem;
 }
 
-.site-header #site-logo {
+.site-header #site-logo img {
   min-width: 220px;
   max-width: 400px;
 }
