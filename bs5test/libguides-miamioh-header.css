@@ -1,12 +1,6 @@
 /*------CUSTOM site-wide Navigation and Footer CSS STARTS HERE----------*/
 
 
-$red:     #c3142d !default;
-$MU-red-vary: #c41230;
-$MU-red-dark:  #941728;
-$MU-link:     #007B89;
-
-
 /* --- Accessibiity focus ---- */
 :focus {
   outline: auto 2px Highlight!important;
@@ -86,14 +80,14 @@ div.gsc-input-box {
 }
 
 #googleSCHLsearch {
-  background-color: $red;
+  background-color: #c3142d;
   color: white;
 }
 
 #gSearch{
   width: 100%; 
   min-width: 180px; 
-  background-color: $red;
+  background-color: #c3142d;
   border: 0px!important;
 }
 
@@ -104,14 +98,14 @@ div.gsc-input-box {
 }
 
 button.gsc-search-button, .gsc-search-button-v2 {
-  background-color: $red !important;
+  background-color: #c3142d !important;
   margin-left: 0.5rem !important;
-  border-color: $red !important;
+  border-color: #c3142d !important;
   padding: 0px 8px !important; 
   outline: 1px solid white !important;
   outline-offset: 2px !important;
 :hover{
-  background-color: $red !important;
+  background-color: #c3142d !important;
 }
 }
 
@@ -130,7 +124,7 @@ button.gsc-search-button, .gsc-search-button-v2 {
 
 .stripe-1 {
   // background: repeating-linear-gradient(-30deg, #C03C47, #C03C47 2px, #B61F2E 1px, #B61F2E 7px);
-  background-color: $red;
+  background-color: #c3142d;
 }
 
 .stripe-divid {
@@ -161,7 +155,7 @@ button.gsc-search-button, .gsc-search-button-v2 {
   background-repeat: no-repeat;
   background-size: 50%;
   background-position: right bottom;
-  border-bottom: $red 1px solid;
+  border-bottom: #c3142d 1px solid;
   box-shadow: 0 0.25rem 1.25rem 0 rgba(0, 0, 0, 0.2);
   @media screen and ( min-width:576px ){
     width:98%;
@@ -195,7 +189,7 @@ button.gsc-search-button, .gsc-search-button-v2 {
   &:hover {
     text-decoration: none;
     color: white;  
-    background-color: $red !important;
+    background-color: #c3142d !important;
     padding-right: 5px;
   }
 }
