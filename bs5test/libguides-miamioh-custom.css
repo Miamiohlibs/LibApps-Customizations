@@ -109,6 +109,7 @@ h1:after,
  */
 
 .site-header {
+  width: 100%;
   border-top: 5px solid #424242;
   border-bottom: 1px solid #e8e8e8;
   min-height: 82.5px;
@@ -321,12 +322,19 @@ h1:after,
   padding: 0 0.25em 0 0.5em;
 }
 
-.site-header .dropdown-menu li a:hover {
+.dropdown-menu li a:hover {
   text-decoration: none;
   color: white;
   background-color: #c3142d !important;
   padding-right: 5px;
 }
+
+/* Diagonal stripes on navigation background */
+
+
+.stripe-1 { background-color: #C3142D; }
+
+
 
    /**
  * 2.1 Google Search
