@@ -83,43 +83,6 @@
  * ----------------------------------------------------------------------------
  */
 
-   #s-lg-tabs-container .nav-tabs .dropdown-toggle .caret {
-  margin-left: 2px;
-  margin-top: 2px;
-}
-#s-lg-guide-tabs ul.nav li.dropdown a.s-lg-tab-drop:hover ~ ul.dropdown-menu,
-#s-lg-guide-tabs ul.nav li.dropdown ul.dropdown-menu:hover,
-#s-lg-guide-tabs ul.nav li.dropdown:hover ul.dropdown-menu {
-  display: block;
-}
-#s-lg-guide-tabs .dropdown-menu {
-  margin: -1px !important;
-  left: 1px;
-}
-.s-lg-tabs-side .nav {
-  margin: 0 0 40px;
-}
-.s-lg-tabs-side .s-lg-boxnav {
-  margin-top: 2px;
-  margin-bottom: 0;
-  margin-left: 20px;
-}
-.s-lg-tabs-side .s-lg-boxnav .list-group-item {
-  padding-top: 4px;
-  padding-bottom: 4px;
-  margin-top: 4px;
-  margin-bottom: 4px;
-  background-color: #fafafa;
-}
-.s-lg-tabs-side .s-lg-subtab-ul {
-  margin-top: 2px;
-  margin-left: 20px;
-  margin-bottom: 0;
-}
-#s-lg-guide-tabs .nav-tabs > li {
-  margin-bottom: -1px;
-  margin-top: 2px;
-}
 
   
     /**
