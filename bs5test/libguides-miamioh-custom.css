@@ -2,8 +2,7 @@
  * Table of Contents (CSS):
  * 1.0 - Basic
  * 2.0 - Header/Navigation Bar
- * 2.1 - Header/Navigation @media queries
- * 2.2 - Google website search
+ * 2.1 - Google website search
  * 3.0 - Individual Guide CSS
  * 4.0 - Footer
  * 5.0 - A-Z Page
@@ -21,6 +20,8 @@
         outline: auto 2px Highlight !important;
         outline: auto 5px -webkit-focus-ring-color !important;
     }
+
+
 
     body {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -53,13 +54,9 @@ a:hover { color: #7e0d1d; text-decoration: underline; }
         outline: auto 5px -webkit-focus-ring-color !important;
     }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
+    h1, h2, h3, h4, h5, h6 {
         font-family: 'Cabin Condensed', sans-serif !important;
+        color: #424242;
     }
 
     h1#s-lg-guide-name,
@@ -69,6 +66,29 @@ a:hover { color: #7e0d1d; text-decoration: underline; }
         font: normal 3.5em 'Cabin Condensed', sans-serif;
         padding: 0px 0px;
     }
+
+
+h1:after,
+.h1:after {
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#960018),
+    to(#ff7883)
+  );
+  background: linear-gradient(to right, #960018, #ff7883);
+  border-radius: 2px;
+  bottom: -0.2em;
+  content: "";
+  display: block;
+  height: 0.1em;
+  position: relative;
+  width: 3.2em;
+  margin-top: -0.15em;
+}
+
+
 
     a.label-info {
         background-color: #008296;
@@ -84,73 +104,432 @@ a:hover { color: #7e0d1d; text-decoration: underline; }
     }
 
     /**
- * 2.0 Libraries Header and Navigation Bar and Google Site Search
- *  SEE ADJUSTED-HEADER-STYLES
+ * 2.0 Header and Navbar
  * ----------------------------------------------------------------------------
  */
 
+.site-header {
+  border-top: 5px solid #424242;
+  border-bottom: 1px solid #e8e8e8;
+  min-height: 82.5px;
+  line-height: 32.4px;
+  position: relative;
+}
+
+@media screen and (max-width: 768px) {
+  .site-header {
+    min-height: 60px;
+  }
+}
+
+.site-header .nav-title {
+  font-family: "Adelle Regular", Georgia, "Times New Roman", serif;
+  font-size: 18.4px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+@media screen and (min-width: 576px) {
+  .site-header .nav-title {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .site-header .nav-title {
+    font-size: 21.6px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .site-header .nav-title {
+    font-size: 23.2px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .site-header .nav-title {
+    font-size: 24.8px;
+  }
+}
+
+.site-header .nav-title:hover,
+.site-header .nav-title:visited {
+  color: #fffefc !important;
+}
+
+.site-header a.show {
+  text-decoration: underline !important;
+}
+
+.site-header {
+  position: absolute;
+  top: 9px;
+  right: 15px;
+  background-color: #fffefc;
+  border: 1px solid #e8e8e8;
+  border-radius: 5px;
+  text-align: right;
+}
+
+.site-header .nav-trigger {
+  display: none;
+}
+
+.site-header .menu-icon {
+  float: right;
+  width: 36px;
+  height: 26px;
+  line-height: 0;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.site-header .menu-icon > svg path {
+  fill: #424242;
+}
+
+.site-header label[for="nav-trigger"] {
+  display: block;
+  float: right;
+  width: 36px;
+  height: 36px;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.site-header input ~ .trigger {
+  clear: both;
+  display: none;
+}
+
+.site-header input:checked ~ .trigger {
+  display: block;
+  padding-bottom: 5px;
+}
+
+.site-header .page-link {
+  color: #222;
+  line-height: 1.5;
+  display: block;
+  padding: 5px 10px;
+  margin-left: 20px;
+}
+
+.site-header .page-link:not(:last-child) {
+  margin-right: 0;
+}
+
+@media screen and (min-width: 600px) {
+  .site-header {
+    position: static;
+    float: right;
+    border: none;
+    background-color: inherit;
+  }
+  .site-header label[for="nav-trigger"] {
+    display: none;
+  }
+  .site-header .menu-icon {
+    display: none;
+  }
+  .site-header input ~ .trigger {
+    display: block;
+  }
+  .site-header .page-link {
+    display: inline;
+    padding: 0;
+    margin-left: auto;
+  }
+  .site-header .page-link:not(:last-child) {
+    margin-right: 20px;
+  }
+}
+
+/* Super Nav Menu */
+#supernav li a {
+  color: white;
+  font-weight: 200;
+}
+
+#supernav li:nth-child(-n + 3)::after {
+  content: "/";
+  color: white;
+  padding: 0.35rem;
+}
+
+#site-logo img {
+  min-width: 220px;
+  max-width: 400px;
+}
+
+
+/* Main Nav Menu */
+#cornerImgAlumni {
+  background-image: url("https://www.lib.miamioh.edu/images/CornerImages/AlumniHallCornerImg.png");
+  background-position: left bottom !important;
+}
+
+#cornerImgKing {
+  background-image: url("https://www.lib.miamioh.edu/images/CornerImages/KingLibraryCornerImg.png");
+}
+
+#cornerImgArt {
+  background-image: url("https://www.lib.miamioh.edu/images/CornerImages/LibraryCornerImg.png");
+}
+
+#main3nav {
+  max-width: 1120px;
+}
+
+#main3nav .dropdown-menu {
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: right bottom;
+  border-bottom: #c3142d 1px solid;
+  box-shadow: 0 0.25rem 1.25rem 0 rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (min-width: 576px) {
+  #main3nav .dropdown-menu {
+    width: 98%;
+    left: auto;
+    right: 1%;
+  }
+}
+
+#main3nav .dropdown-menu > div {
+  margin-bottom: 1.25rem;
+}
+
+.site-header .navbar-light .navbar-toggler {
+  color: rgba(0, 0, 0, 0.5);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.site-header .navbar-toggler {
+  background-color: white !important;
+}
+
+.site-header .dropdown-menu li a {
+  line-height: 1.35em;
+  margin-bottom: 0.75em;
+  display: block;
+  color: #333;
+  white-space: normal;
+  margin-left: -0.5em;
+  padding: 0 0.25em 0 0.5em;
+}
+
+.site-header .dropdown-menu li a:hover {
+  text-decoration: none;
+  color: white;
+  background-color: #c3142d !important;
+  padding-right: 5px;
+}
+
+   /**
+ * 2.1 Google Search
+ * ----------------------------------------------------------------------------
+ */
+
+td.gsc-input,
+td.gsc-search-button {
+  border: 0px !important;
+  padding: 0 !important;
+}
+
+.gsib_a {
+  padding: 0px !important;
+}
+
+td.gsib_b {
+  display: none;
+}
+
+div.ad,
+div.adStd {
+  display: none;
+}
+
+div.gsc-adBlock {
+  display: none !important;
+}
+
+form.gsc-search-box {
+  font-size: 22px !important;
+}
+
+table.gsc-input {
+  margin-bottom: 0 !important;
+}
+
+/* to kill ads */
+.gsc-control-cse {
+  background-color: none;
+  border: none !important;
+  background-color: rgba(255, 255, 255, 0) !important;
+  padding: 0 1em !important;
+}
+
+div.gsc-input-box {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+#googleSCHLsearch {
+  background-color: #c3142d;
+  color: white;
+}
+
+#gSearch {
+  width: 100%;
+  min-width: 180px;
+  background-color: #c3142d;
+  border: 0px !important;
+}
+
+.gsc-input input[name="search"] {
+  height: 2em !important;
+  outline: 1px solid white !important;
+  outline-offset: 2px !important;
+}
+
+button.gsc-search-button,
+.gsc-search-button-v2 {
+  background-color: #c3142d !important;
+  margin-left: 0.5rem !important;
+  border-color: #c3142d !important;
+  padding: 0px 8px !important;
+  outline: 1px solid white !important;
+  outline-offset: 2px !important;
+}
+
+button.gsc-search-button :hover,
+.gsc-search-button-v2 :hover {
+  background-color: #c3142d !important;
+}
 
   
     /**
  * 2.2 footer styles
  * ----------------------------------------------------------------------------*/
-    .footer-container {
-        min-width: 850px;
-    }
+   .footer-container {
+  min-width: 850px;
+}
 
-    .footer {
-        font-family: 'Raleway', sans-serif;
-        color: white;
-    }
+.footer {
+  font-family: "Raleway", sans-serif;
+  color: white;
+}
 
-    .footerTitle {
-        text-transform: uppercase;
-    }
+.footerTitle {
+  text-transform: uppercase;
+}
 
-    .footer address a,
-    .footer p a {
-        color: white;
-        padding: 0 0.2rem;
-    }
+.footer address a,
+.footer p a {
+  color: white;
+  padding: 0 0.2rem;
+}
 
-    .footer address a:hover,
-    .footer p a:hover {
-        text-decoration: none;
-        color: #941728 !important;
-        background-color: white;
-    }
+.footer address a:hover,
+.footer p a:hover {
+  text-decoration: none;
+  color: #941728 !important;
+  background-color: white;
+}
 
-    .footer li {
-        font-family: 'Raleway', sans-serif;
-        color: white;
-        list-style: none !important;
-        margin-left: -1.825em;
-    }
+.footer li {
+  font-family: "Raleway", sans-serif;
+  color: white;
+  list-style: none !important;
+  margin-left: -1.825em;
+}
 
-    .footer li a {
-        color: white;
-        padding: 0 0.2rem;
-    }
+.footer li a {
+  color: white;
+  padding: 0 0.2rem;
+}
 
-    .footer li a:hover {
-        text-decoration: none;
-        color: #941728 !important;
-        background-color: white;
-    }
+.footer li a:hover {
+  text-decoration: none;
+  color: #941728 !important;
+  background-color: white;
+}
 
-    h2.footer-header,
-    .footer-header.h2 {
-        font-size: 1em !important;
-    }
+h2.footer-header,
+.footer-header.h2 {
+  font-size: 1em !important;
+}
 
-    li.title {
-        line-height: 1.5em;
-        margin: 1em 0;
-    }
+li.title {
+  line-height: 1.5em;
+  margin: 1em 0;
+}
 
-    /* -- icon to signify it opens in new window -- */
+/** Site footer */
+.site-footer {
+  border-top: 1px solid #e8e8e8;
+  padding: 30px 0;
+}
 
-    /*# sourceMappingURL=styleNaviAndFooter.css.map */
+.footer-heading {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.contact-list,
+.social-media-list {
+  list-style: none;
+  margin-left: 0;
+}
+
+.footer-col-wrapper {
+  font-size: 15px;
+  color: #828282;
+  margin-left: -15px;
+}
+
+.footer-col {
+  width: -webkit-calc(100% - (30px / 2));
+  width: calc(100% - (30px / 2));
+  margin-bottom: 15px;
+  padding-left: 15px;
+}
+
+.footer-col-1,
+.footer-col-2 {
+  width: -webkit-calc(50% - (30px / 2));
+  width: calc(50% - (30px / 2));
+}
+
+.footer-col-3 {
+  width: -webkit-calc(100% - (30px / 2));
+  width: calc(100% - (30px / 2));
+}
+
+@media screen and (min-width: 800px) {
+  .footer-col-1 {
+    width: -webkit-calc(35% - (30px / 2));
+    width: calc(35% - (30px / 2));
+  }
+  .footer-col-2 {
+    width: -webkit-calc(20% - (30px / 2));
+    width: calc(20% - (30px / 2));
+  }
+  .footer-col-3 {
+    width: -webkit-calc(45% - (30px / 2));
+    width: calc(45% - (30px / 2));
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .footer-col {
+    float: left;
+  }
+}
 
 
 
