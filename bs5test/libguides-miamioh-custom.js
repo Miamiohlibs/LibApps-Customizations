@@ -58,7 +58,18 @@
         }, 1000);
     });
 
-    $('site-search-icon-control').click(function () {
+    $('.site-search-icon-control').click(function(){
+        $('#site-search-icon').toggleClass('bi-search');
+        $('#site-search-icon').toggleClass('bi-x-circle');
+        $('.bi-x-circle ~ span').text('Close');
+        $('.bi-search ~ span').text('Site Search');
+        });
+
+
+    /* 
+
+
+   $('site-search-icon-control').click(function () {
         $('#site-search-icon').toggleClass('fa-search');
         $('#site-search-icon').toggleClass('fa-times-circle');
         $('.fa-times-circle ~ span').text('Close');
@@ -66,7 +77,6 @@
     });
 
 
-    /* 
      * 0.3 - Add aria-current="page"
      *
      * Add aria-current="page" to the menu item corresponding to the current page.
@@ -99,3 +109,4 @@
                 .attr('aria-current', 'page');
         });
     });
+
