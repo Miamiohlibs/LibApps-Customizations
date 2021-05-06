@@ -40,43 +40,35 @@
      * * ---------------------------------------
      */
 
+  
     $(function () {
-        var cx = '009740610740149956689:vgajvsbmghf';
-        var gcse = document.createElement('script');
-        gcse.type = 'text/javascript';
-        gcse.async = true;
-        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(gcse, s);
+      var cx = '009740610740149956689:vgajvsbmghf';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
 
-        // Enlarge the magnify glass icon of Google Site Search Box
-        setTimeout(function () {
-            if ($('.gsc-search-button-v2 > svg')[0] !== undefined) {
-                $('.gsc-search-button-v2 > svg')[0].setAttribute("width", "20");
-                $('.gsc-search-button-v2 > svg')[0].setAttribute("height", "20");
-            }
-        }, 1000);
+      // Enlarge the magnify glass icon of Google Site Search Box
+      setTimeout(function(){
+        if ($('.gsc-search-button-v2 > svg')[0]!== undefined) {
+        $('.gsc-search-button-v2 > svg')[0].setAttribute("width","20");
+        $('.gsc-search-button-v2 > svg')[0].setAttribute("height","20");
+        }
+      },1000);
+    });
+    
+    $('.site-search-icon-control').click(function(){
+      $('#site-search-icon').toggleClass('bi-search');
+      $('#site-search-icon').toggleClass('bi-x-circle');
+      $('.bi-x-circle ~ span').text('Close');
+      $('.bi-search ~ span').text('Site Search');
     });
 
-    $('.site-search-icon-control').click(function(){
-        $('#site-search-icon').toggleClass('bi-search');
-        $('#site-search-icon').toggleClass('bi-x-circle');
-        $('.bi-x-circle ~ span').text('Close');
-        $('.bi-search ~ span').text('Site Search');
-        });
 
 
     /* 
-
-
-   $('site-search-icon-control').click(function () {
-        $('#site-search-icon').toggleClass('fa-search');
-        $('#site-search-icon').toggleClass('fa-times-circle');
-        $('.fa-times-circle ~ span').text('Close');
-        $('.fa-search ~ span').text('Site Search');
-    });
-
-
      * 0.3 - Add aria-current="page"
      *
      * Add aria-current="page" to the menu item corresponding to the current page.
