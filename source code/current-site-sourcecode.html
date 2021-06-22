@@ -1,0 +1,2123 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Home - Subject & Course Guides at Miami University</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta name="robots" content="noarchive" /><!-- favicon.twig -->
+<link rel="apple-touch-icon" sizes="180x180" href="//libapps.s3.amazonaws.com/apps/common/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//libapps.s3.amazonaws.com/apps/common/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="//libapps.s3.amazonaws.com/apps/common/favicon/favicon-16x16.png">
+<link rel="manifest" href="//libapps.s3.amazonaws.com/apps/common/favicon/site.webmanifest">
+<link rel="mask-icon" href="//libapps.s3.amazonaws.com/apps/common/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="//libapps.s3.amazonaws.com/apps/common/favicon/favicon.ico">
+<meta name="msapplication-TileColor" content="#ffc40d">
+<meta name="msapplication-config" content="//libapps.s3.amazonaws.com/apps/common/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:title" content="Subject & Course Guides">
+                <meta property="og:description" content="Subject & Course Guides Browse for guides alphabetically, by type (subject, course, or topic) or by librarian."><meta property="og:image" content="https://libguides.lib.miamioh.edu/ld.php?_=1622040826&size=facebook&screenshot=site_screenshot.png">
+                    <meta property="og:image:width" content="1200">
+                    <meta property="og:image:height" content="627">
+                    <meta name="twitter:image" content="https://libguides.lib.miamioh.edu/ld.php?_=1622040826&size=twitter&screenshot=site_screenshot.png"><meta property="og:type" content="website">
+      		    <meta property="og:url" content="https://libguides.lib.miamioh.edu/">
+                <meta name="twitter:card" content="summary_large_image">
+                <meta name="twitter:site" content="@springshare"><link rel="stylesheet" href="/web/jquery/css/jquery-ui.min.css?2695" />
+                <link rel="stylesheet" href="/web/font-awesome/4.7.0/css/font-awesome.min.css" />
+                <link rel="stylesheet" href="/web/css2.9.1/lg-public-no-bs.min.css" />
+                <script type="text/javascript" src="/web/jquery/js/1.12.4_jquery.min.js"></script>
+                <!-- js_include_fallback.twig -->
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        jQuery.ui ||
+        document.write('<script src="/web/jquery/js/jquery-ui.min.js?2695">\x3C/script>');
+    </script>
+<!-- !js_include_fallback.twig -->
+                <script type="text/javascript" src="/web/js2.9.1/lg-public-no-bs.min.js"></script>
+                <!-- BEGIN: CUSTOM HEAD JS/CSS -->
+                <!--
+JS Last Updated: 2021-04-06
+Updated by: Jerry Yarnetsky (add bootstrap 3)
+-->
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
+<link rel="shortcut icon" href="https://www.lib.miamioh.edu/sites/default/files/favicon_0.ico" />
+
+<link href="https://fonts.googleapis.com/css?family=Cabin+Condensed&display=swap" rel="stylesheet">  
+<link href="https://fonts.googleapis.com/css?family=Raleway:200,300&display=swap" rel="stylesheet">
+
+<script>
+/** ----------------------------------------------------------------
+ * Table of Contents (Javascript):
+ * 0.1 - AppendEmail
+ * 0.2 - Google Custom Search
+ * 0.3 - Add aria-current="page" in main menu
+ * 1.0 & Beyond -- CSS (see below for detailed CSS TOC)
+ * -------------------------------------------------------------------
+ */
+
+/* 
+ *   0.1 - Append Email
+ *   this function can be called from the "other widget code" section
+ *   to append a users email address to the contact box (in addition to
+ *   the "Email Me" button)
+ */
+    const AppendEmail = (profileId) => { 
+        let thisProfile = $('#s-lib-profile-' + profileId);
+        let emailAddress = $(thisProfile)
+            .find('.s-lib-profile-email a')
+            .attr('title');
+        let emailDiv = '<div>' + emailAddress + '</div>';
+        let websiteLogo = $(thisProfile).find(
+            '.s-lib-profile-contact a .fa-bookmark'
+        );
+        let skypeLogo = $(thisProfile).find('.s-lib-profile-contact a .fa-skype');
+        if (websiteLogo.length > 0) {
+            $(websiteLogo).parent().before(emailDiv);
+        } else if (skypeLogo.length > 0) {
+            $(skypeLogo).parent().before(emailDiv);
+        } else {
+            $(thisProfile).find('.s-lib-profile-contact').append(emailDiv);
+        }
+    }
+
+   /* 
+     * 0.2 - Google Custom Search
+     * adds Google Custom Search box to header 
+     */
+
+    $(function() {
+      var cx = '009740610740149956689:vgajvsbmghf';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+    });
+
+    /* 
+     * 0.3 - Add aria-current="page"
+     *
+     * Add aria-current="page" to the menu item corresponding to the current page.
+     * Uses JSON data generated by Jekyll to provide a crosswalk between the
+     * Jekyll URLs and the LibGuides URLs. 
+     *  --------------------------------------------------------------------------------------------
+     */
+
+    $(function () {
+        var crosswalk;
+        $.ajax({
+            url: 'https://www.lib.miamioh.edu/crosswalk/jekyll-libguides.json',
+            dataType: 'json',
+            async: false,
+            success: function (data) {
+            crosswalk = data;
+            },
+        });
+
+        /* find crosswalk entries that match this page url; add aria-current=page for each relevant item in nav */
+        var pageUrl = window.location.href;
+        var currPages = crosswalk.filter((obj) => {
+            if (obj.lgurl == pageUrl) {
+            return obj;
+            }
+        });
+        currPages.forEach((currPage) => {
+            $('a[href$="' + currPage.permalink + '"]')
+            .first()
+            .attr('aria-current', 'page');
+        });
+    });
+</script>
+
+<style>
+
+/** ----------------------------------------------------------------
+ * Table of Contents (CSS):
+ * 1.0 - Basic
+ * 2.0 - Header/Navigation Bar
+ * 2.1 - Header/Navigation @media queries
+ * 2.2 - Google website search
+ * 3.0 - Individual Guide CSS
+ * 4.0 - Footer
+ * 5.0 - A-Z Page
+ * 6.0 - @media queries
+ * 7.0 - LibChat
+ * 8.0 -- @Fonts
+ * -------------------------------------------------------------------
+ */
+/**
+ * 1.0 Basic
+ * ----------------------------------------------------------------------------
+ */
+/* --- Accessibiity focus ---- */
+:focus {
+  outline: auto 2px Highlight !important;
+  outline: auto 5px -webkit-focus-ring-color !important;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  background-color: #fff;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+p, li, well {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+a {
+  font-weight: bold;
+  color: #007B89;
+}
+
+:focus {
+  outline: auto 2px Highlight !important;
+  outline: auto 5px -webkit-focus-ring-color !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cabin Condensed', sans-serif !important;
+}
+
+h1#s-lg-guide-name,
+h1#s-lib-public-header-title {
+  display: block;
+  margin: 0em 0 0.25em 0em;
+  font: normal 3.5em 'Cabin Condensed', sans-serif;
+  padding: 0px 0px;
+}
+
+a.label-info {
+  background-color: #008296;
+}
+
+div.s-lib-box{
+  box-shadow: none;
+}
+
+.alert-info {
+    background-color: #fff;
+    border-color: #ddd;
+}
+
+/**
+ * 2.0 Libraries Header and Navigation Bar
+ * ----------------------------------------------------------------------------
+ */
+
+
+
+#libguides-navbar {
+  margin: 0 0 4em 0;
+  height: 100px;
+  background: #B61F2E;
+}
+
+.navbar{
+  border-radius: 0px;
+  border: 0px;
+}
+
+.navbar-brand {
+  position: relative;
+  z-index: 10000;
+  float: left;
+  background-color: #B61F2E;
+  border: 3px solid white;
+  margin: -0.3em 0 -2em 0.75em;
+  width: 18rem;
+  height: 13rem;
+  box-shadow: 2px 2px 5px #999;
+}
+
+.navbar-brand img {
+  margin: 0px auto;
+  position: relative;
+  top: 49%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  height: 100%!important;
+  width: auto!important;
+}
+
+a.navbar-brand:hover, a.navbar-brand:focus {background: #B61F2E!important;box-shadow: 1px 1px 2px #aaa;}
+
+
+#libguides-navbar ul.nav.navbar-nav {
+  padding: 0em 0 0 0em !important;
+  margin: 1.5em auto 0rem 10rem !important;
+}
+
+#libguides-navbar ul.navbar-nav li.dropdown {
+  position: static!important;
+}
+
+#libguides-navbar ul.dropdown-menu {
+  padding: 1em 0em;
+  margin: 0;
+  width: 100%;
+}
+
+.caret {
+    border-top: 8px solid;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    transform: rotateZ(-90deg);
+}
+
+li.dropdown.open .caret {
+    transform: rotateZ(0deg);
+}
+
+#libguides-navbar ul.dropdown-menu .container{
+  padding: 1.5em 0em 2em 12em;
+}
+
+
+#libguides-navbar ul.navbar-nav li.dropdown a.dropdown-toggle {
+  font-family: "Adelle Regular", Georgia, "Times New Roman", serif;
+  font-size: 1.7em;
+  font-weight: 100;
+  color: #FFFEFC;
+  display: block;
+  padding-right: 1.2em;
+}
+
+#libguides-navbar ul.navbar-nav li.dropdown.open a.dropdown-toggle,
+#libguides-navbar ul.navbar-nav li.dropdown a.dropdown-toggle:hover {
+  background-color: #ffffff00;
+  text-decoration: underline;
+}
+
+ul.dropdown-menu {
+  background-color: #ffffff !important;
+  padding: 0 0 1.5em 0;
+  margin: 0.25em 1em 1em 1em;
+}
+
+ul.multi-column-dropdown {
+  padding: 0em 0 0 0.5em;
+}
+
+.multi-column-dropdown li {
+  list-style-type: none !important;
+}
+
+.multi-column-dropdown li.title {
+  list-style-type: none;
+  margin: 1.5em 0 0.25em 0em !important;
+  color: #333;
+  font-size: 1.2em;
+}
+
+.multi-column-dropdown li a {
+  display: block;
+  line-height: 1.55;
+  white-space: normal;
+  margin: 0 0 0.25em -0.5em;
+  padding: 0em 0.35em 0em 0.5em;
+  color: black;
+  font-weight: normal;
+  font-size: 1.1em;
+  margin-bottom: 0.75em;
+}
+
+.multi-column-dropdown li a:hover {
+  display: block;
+  background-color: #C3142D;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* --- superNav ---- */
+#superNav {
+  float:right;
+  margin: 0 -10rem 0 0rem !important;
+}
+
+#superNav li {
+  float: left;
+  margin: 0.75em 1.5em 0 0em;
+  list-style-type: none;
+}
+
+#superNav li a {
+  font-weight: normal;
+  color:white;
+}
+
+#superNav a:hover {
+  text-decoration: underline;
+}
+
+#research-dropdown {
+  background-image: url("https://www.lib.miamioh.edu/images/CornerImages/AlumniHallCornerImg.png");
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  background-size: 50%;
+}
+
+#using-dropdown {
+  background-image: url("https://www.lib.miamioh.edu/images/CornerImages/KingLibraryCornerImg.png");
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  background-size: 50%;
+}
+
+#about-dropdown {
+  background-image: url("https://www.lib.miamioh.edu/images/CornerImages/LibraryCornerImg.png");
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  background-size: 50%;
+}
+
+
+/**
+ * 2.1 header/menus media queries
+ * ----------------------------------------------------------------------------*/
+
+/* 2.1.1 ------------------------------------ */
+@media screen and (max-width:1199px) {
+  #libguides-navbar {
+    height: 8.5em !important;
+  }
+
+  #libguides-navbar ul.nav.navbar-nav {
+    margin: -3em 0em 0 20em !important;
+  }
+
+  #libguides-navbar ul.navbar-nav li.dropdown a.dropdown-toggle {
+    font-size: 1.55em;
+    padding-right: 1em;
+  }
+  
+  #superNav {
+  margin: 0 0 0 14em !important;
+}
+  
+  #libguides-navbar ul.dropdown-menu .container{
+  margin: 0 auto 0 auto;
+  padding: 0em 0em 2em 15em;
+  width:1000px;
+}
+  
+  
+}
+
+/* 2.1.2 ---------------------------------------- */
+@media screen and (max-width:991px) {
+    
+  
+  #libguides-navbar ul.navbar-nav li.dropdown a.dropdown-toggle {
+    font-size: 1.35em !important;
+    padding-right: 0.75em !important;
+  }
+
+  #libguides-navbar ul.nav.navbar-nav {
+    padding: 0em 0 0 0em !important;
+    width: 100%;
+    margin: -3em 2rem 4.5rem 17rem !important;
+  }
+    
+
+    #superNav {
+  margin: 0 0 0 12.5rem !important;
+}
+  
+  li.giveToLibrary, li.miami {
+    display: none;
+  }
+
+  #libguides-navbar ul.navbar-nav li.dropdown a.dropdown-toggle {
+    font-size: 1.5em;
+    padding-right: 1em;
+  }
+
+ul.dropdown-menu {
+  background-color: #ffffff !important;
+  padding: 0 0 1.5em 0;
+  margin: 0.25em 0em 1em 0em;
+  width: 100%;
+}
+  
+#libguides-navbar ul.dropdown-menu .container{
+  margin: 0 auto 0 auto;
+  padding: 0em 0em 2em 0em;
+  width:700px;
+}
+  
+ul.multi-column-dropdown {
+  padding: 1em 0 0 0em;
+  margin: 0 0 0 0em;
+}
+  
+#research-dropdown,
+#using-dropdown,
+#about-dropdown {
+    background-image: none;
+  }
+  
+  
+}
+
+/* 2.1.3 -------------------------------------------- */
+@media screen and (max-width: 768px) {
+  
+  
+  
+    #libguides-navbar {
+    height: 90px !important;
+      border: none;
+  }
+  
+.navbar-brand {
+    width: 160px;
+    height: 120px;
+  }
+
+.navbar-brand img {
+    width: 120px;
+    height: auto;
+  }
+  
+#libguides-navbar button.navbar-toggle {
+  cursor: pointer;
+  margin: 3em 2em 0em 0em;
+  border: 1px solid #fff;
+  background: transparent;
+}
+  
+#libguides-navbar button.navbar-toggle.collapsed {
+    border: 1px solid #333 !important;
+  background-color: #fff;
+  }
+
+#libguides-navbar button.navbar-toggle.collapsed span.icon-bar {
+    border: 1px solid #333 !important;
+    color: #333 !important;
+  }  
+  
+  #navbar-collapse-libguides {
+    position: relative;
+    z-index: 100;
+    background: repeating-linear-gradient(-30deg, #C03C47, #C03C47 2px, #B61F2E 1px, #B61F2E 6px);
+    width: 105%!important;
+    padding:0em 2em 1em 0.25em;
+    margin: 0.75em 0 0em -1.25em;}
+  
+  
+#libguides-navbar ul.nav.navbar-nav {
+  margin: 3em auto 0em 0.5em!important;
+  width: 97%;
+}
+  
+   ul.dropdown-menu {
+    background-color: #ffffffcc !important;
+    border-radius: 10px !important;
+    padding: 0 10em 0em 0!important;
+    margin: 0.5em 0em 1em 1em !important;
+  }
+
+  ul.multi-column-dropdown {
+    margin: 0.75em 0em 0em 0em!important;
+   padding: 0 0 1em 1.5em;
+    border-bottom: 1px solid #aaa;
+      width: 85%!important;
+
+  }
+  
+.multi-column-dropdown li.title {
+  margin: 0 0em 0.25em 0em!important;
+}
+
+ /*#superNav {
+    margin: 10em 0 0 10em!important;
+  }*/
+  
+  #superNav, #superNav li.miamioh, span.hide-library {display: none;}
+
+  #research-dropdown, #using-dropdown, #about-dropdown {
+  background-image: none;
+}
+
+  
+  h1#s-lg-guide-name,
+  h1#s-lib-public-header-title {
+    margin: 0em 0 0.25em 0.5em;
+    font-size: 3em;
+  }
+
+  #s-lg-box-18909832-container {
+    display: none;
+  }  
+  
+}
+
+/**
+ * 2.2 Google website search
+ * ----------------------------------------------------------------------------*/
+/* Google Search input box */
+td.gsc-input,
+td.gsc-search-button {
+  border: 0px !important;
+  padding: 0 !important;
+}
+
+a.gs-title {
+color:#00c!important;
+}
+
+.gsc-control-cse {
+  margin: 0rem 0 0rem 0;
+}
+
+.gsib_a {
+  padding: 2px 5px !important;
+}
+
+.gsc-adBlock, #adBlock {
+  display: none !important;
+}
+
+/* to kill ads */
+form.gsc-search-box {
+  font-size: 20px !important;
+}
+
+table.gsc-input {
+  margin-bottom: 0 !important;
+}
+
+.gsc-control-cse {
+  background-color: none;
+  border: none !important;
+  background-color: rgba(255, 255, 255, 0) !important;
+  padding: 0 !important;
+}
+
+div.gsc-input-box {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+#googleSCHLsearch {
+  background-color: #0B86BA;
+  color: white;
+}
+
+#___gcse_0 {
+  margin-top: -0.35rem;
+  line-height: 1;
+  width: 20rem;
+  height: 2rem;
+}
+
+button.gsc-search-button {
+  background-color: #0B86BA;
+  height: 2.45rem;
+}
+
+.gsc-search-button-v2 {
+  font-size: 1.25rem !important;
+  padding: 4px 12px !important;
+}
+
+.gsc-modal-background-image {
+  background-color: #000000aa !important;
+}
+
+/**
+ * 3.0 Individual Guide CSS
+ * ----------------------------------------------------------------------------*/
+ ul.dropdown-menu{
+   padding:0px !important;
+ }
+ .dropdown-menu>.active>a{
+   background:white !important;
+ }
+ .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover{
+   background: #C3142D !important;
+ }
+#s-lg-guide-tabs-title-bar {
+  border: none;
+}
+
+#s-lib-bc {
+ display: none;
+}
+
+/*#s-lib-bc {
+  border-radius: 3px;
+  padding: 0.1em 0.5em 0.5em 0.25em;
+  margin: 0.75em 0 0em 0;
+}*/
+
+
+#s-lg-guide-search-box {}
+
+ul.nav-stacked li {
+  margin: 0.5em 0;
+  border-radius: 5px;
+}
+
+ul.nav-stacked li a {
+  padding: 0.35em 1.25em !important;
+  font-size: 1em;
+  color: #941728 !important;
+}
+
+ul.nav-stacked li a:hover {
+  color: #fff !important;
+  background: #941728 !important;
+  border-radius: 5px;
+}
+
+ul.nav-stacked li a.active {
+  color: #fff !important;
+}
+
+ul.nav-stacked li.dropdown ul.s-lg-subtab-ul {
+  background-color: #fff;
+  width: 100%;
+}
+
+ul.nav-stacked li.dropdown ul.s-lg-subtab-ul li {
+  border: none;
+}
+
+a.s-lg-tab-drop.dropdown-toggle {
+  color: #fff !important;
+  background-color: #B61E2E !important;
+}
+
+a.s-lg-tab-drop.dropdown-toggle span.caret {
+  border-top: 4px solid #fff !important;
+}
+
+div.s-lg-col-boxes h2.s-lib-box-title {
+  display: block;
+  margin: 0em 0 0 0;
+  padding: .5em 0px 0.5em 0.85em;
+  font: 500 2em/1.45em Georgia, Times New Roman, serif;
+  background: #fff;
+  color: #000;
+}
+
+/*---------Oxford proactive chat box----------*/
+div#s-lg-box-18909832 {
+  margin: -20px 0 0 0;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+}
+
+div#s-lg-box-18909832 h2 {
+  display: none;
+}
+
+/*---------Oxford normal chat box----------*/
+div#s-lg-box-19192826 {
+  margin: -20px 0 0 0;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+}
+
+div#s-lg-box-19192826 h2 {
+  display: none;
+}
+
+/*---------Regionals chat box----------*/
+div#s-lg-box-19004034 {
+  margin: -20px 0 0 0;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+}
+
+div#s-lg-box-19004034 h2 {
+  display: none;
+}
+
+div.s-lib-box-content {
+  padding: 10px 20px;
+}
+
+ul#s-lg-page-prevnext.pager li.next a, ul#s-lg-page-prevnext.pager li.previous a {
+  /* background: #B61E2E;
+  color: #fff; */
+}
+
+ul#s-lg-page-prevnext.pager li.next a:hover, ul#s-lg-page-prevnext.pager li.previous a:hover {
+  background: #fff;
+  color: #B61E2E;
+  border: 1px solid #B61E2E;
+}
+
+/**
+ * 4.0 Footer CSS
+ * ----------------------------------------------------------------------------*/
+footer {
+  font: 100 1.125em/1.5em "Raleway", sans-serif;
+  padding: 0em 0em 0em 0;
+  color: #fff;
+}
+
+footer .footer-container {
+  background-color: #941728;
+  padding: 0 0 2em 0 !important;
+}
+
+footer a {
+  color: #fff !important;
+  font-weight: 300 !important;
+}
+
+footer img.footer-logo {
+  width:90%; 
+  margin: 2em 0 0 0;
+}
+
+footer li {
+  list-style-type: none;
+  font-size: 1.1em;
+  line-height: 1.7;
+}
+
+footer h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+#s-lib-footer-public {
+  width: 100%;
+  background: #fff;
+  margin-top: 1em;
+  padding: 0.5em 2em 0em 2em;
+}
+
+address {
+  margin: 1.25em 0 0 0;
+  font-size: 1.5em;
+  color: #fff;
+  font-weight: 300;
+}
+
+/**
+ * 5.0 A-Z Page
+ * ----------------------------------------------------------------------------*/
+body.az-page li#s-lib-bc-site {
+  display: none;
+}
+
+
+#s-lg-az-filter-cols {}
+
+#col-vendors {
+  display: none;
+}
+
+/* Hides the Vendors dropdown */
+#s-lg-az-search-bar {
+  margin-top: 0.5em;
+}
+
+#s-lg-az-search-bar .navbar {
+  width:99.5%;
+  border-radius: 5px;
+  border:1px solid #aaa;
+background-color:#dedede;}
+
+#s-lg-az-search-bar .navbar select {
+  border-radius: 5px;
+  border:1px solid #aaa;
+}
+
+#s-lg-az-search-bar .navbar input {
+  border-radius: 5px 0px 0px 5px;
+  border:1px solid #aaa!important;
+}
+
+#s-lg-az-search-bar .navbar button {
+  border-radius: 0px 5px 5px 0px;
+  border:1px solid #aaa!important;
+  background-color: #007B89;
+  color:#fff;
+}
+
+
+#col-subjects {width: 31%;}
+#col-types {width: 31%;}
+#col-search {width: 38%;}
+
+
+h2#s-lg-az-result-count {
+  height: 0;
+  font-size: 1.65em;
+  margin: 0.75em 0 1.5em 0 !important;
+  padding: 0 0 0 0 !important;
+}
+
+button#s-lg-az-reset {
+  float: right;
+  margin: 0.75em 0.5em;
+  font-weight: bold;
+  font-size: 1.125em;
+  color: #fff;
+  background-color: #007B89;
+  border-radius: 5px;
+  border-color: #007B89;
+  padding: 0.5em 1.25em;
+}
+
+button#s-lg-az-reset:hover {
+  color: #007B89;
+  background-color: #fff;
+}
+
+#s-lg-az-results {
+  margin-top: 2em;
+}
+
+#s-lg-az-results div.s-lg-az-result,
+#s-lg-az-content div.s-lg-az-result {
+  border: 1px solid #ddd;
+  padding: 10px 15px 10px 15px;
+  margin: 1.2em 0 0 0;
+  border-radius: 5px;
+  clear: both;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+}
+
+#s-lg-az-results div.s-lg-az-result:hover,
+#s-lg-az-content div.s-lg-az-result {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#s-lg-az-results .s-lg-db-panel-title {
+  background: #666;
+  color: #fff;
+  margin: 0em 0 0 0;
+  padding: 5px 0px 4px 15px;
+  font-weight: bold;
+  font-size: 1.25em;
+  border-radius: 12px;
+}
+
+div#s-lg-db-name-featured.s-lg-db-panel {
+  margin-bottom: 5em !important;
+}
+
+#s-lg-db-name-featured.s-lg-db-panel::after {
+  content: "Additional Great Databases";
+  float: left;
+  position: relative;
+  margin: 0.75em 0 0em 0;
+  padding: 1em 0 0em 0;
+  color: #777;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+div.s-lg-az-result-title {
+  font-size: 1.35em !important;
+}
+
+div.s-lg-az-result-description {
+  font-size: 1em !important;
+  line-height: 1.35;
+  margin: 0.5em 0.5em 0.5em 1.5em;
+}
+
+.s-lg-label-more-info {
+  font-weight: bold !important;
+  margin: 0.25em 0 0.5em 1.5em;
+}
+
+.s-lg-content-more-info {
+  font-size: 1em !important;
+  line-height: 1.35;
+  margin: 0em 0.5em 1em 1.5em;
+}
+
+div.s-lg-label-more-info {
+  font-size: 1em;
+  font-weight: bold !important;
+}
+
+#s-lg-az-index {
+  padding: 5px;
+  font-size: 1.25em;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#s-lg-db-name-featured .s-lg-db-panel-title {
+  background-color: #555;
+  color: #fff;
+}
+
+#s-lg-db-name-featured .s-lg-az-result-featured {
+  background-color: #fff !important;
+  border: 1px solid #999 !important;
+}
+
+#s-lg-db-name-featured {
+  background-color: #f5e2c0 !important;
+  border: 1px solid #999 !important;
+}
+
+div.sidebar-box {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 0em 1.25em 1.5em 1.25em;
+  margin: 0.5em 0 2.5em 0;
+}
+
+div.sidebar-box h2 {
+  font: 2.5em normal Georgia, serif;
+  margin: 0.5em 0 0.25em 0em;
+  padding: 0 0 0 0;
+}
+
+#academic-essentials {
+  background-color: #f3f3f3;
+}
+
+#s-lg-az-guides-div,
+#s-lg-az-experts-div {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 0em 1.25em 1.5em 1.25em;
+  margin: 0.5em 0 2.5em 0;
+}
+
+#s-lg-az-guides-div h2,
+#s-lg-az-experts-div h2 {
+  font: 2.5em normal Georgia, serif;
+  margin: 0.5em -0.5em 0.125em -0.5em;
+  padding: 0 0 0.25em 0.5em;
+}
+
+#s-lg-az-guides-div {
+  padding-bottom: 0;
+}
+
+#s-lg-az-guides-div ul.s-lg-system-list {
+  margin: 0em 0 -1em -1em;
+  font-size: 1.25em !important;
+}
+
+#s-lg-az-guides-div ul.s-lg-system-list li {
+  border-bottom: 1px solid #ddd;
+  margin: 0 0 0 0;
+  padding: 0.75em 0 0.75em 0;
+  list-style-type: none;
+}
+
+#s-lg-az-guides-div div.s-lg-guide-list-info {
+  font-size: 0.7em !important;
+}
+
+#s-lg-az-experts-div h2.s-lib-box-title {
+  display: none;
+}
+
+#s-lg-az-experts-div div.s-lib-box {
+  border: none !important;
+  box-shadow: none !important;
+  margin-bottom: -4em !important;
+}
+
+.s-lib-profile-name {
+  font-size: 2.25em !important;
+}
+
+.sidebar-box ul li {
+  font-size: 1.125em;
+}
+
+#s-lg-az-lc-widget-div {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin: 0 0 2.5em 0;
+  padding: 1em 1em;
+}
+
+#s-lg-az-trials-div,
+#s-lg-az-popular-div {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 1em 1.25em 1.5em 1.25em;
+  margin: 0 0 3em 0;
+}
+
+#s-lg-az-trials-div .margin-bottom-xlg,
+#s-lg-az-popular-div .margin-bottom-xlg {
+  margin: 0 !important;
+}
+
+#s-lg-az-trials,
+#s-lg-az-popular {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+#s-lg-az-trials-div h2,
+#s-lg-az-popular-div h2 {
+  font: 2.5em normal Georgia, serif;
+  border: none;
+  margin: 0.1em 0 0 0;
+}
+
+#s-lg-az-trials-div .s-lg-az-result,
+#s-lg-az-popular-div .s-lg-az-result {
+  margin: 0.125em 0.25em !important;
+}
+
+#s-lg-az-trials-div .s-lg-az-result-title,
+#s-lg-az-popular-div .s-lg-az-result-title {
+  font-size: 1.125em !important;
+  margin: 0;
+}
+
+#s-lg-az-trials-div .s-lg-az-result-description,
+#s-lg-az-popular-div .s-lg-az-result-description,
+#s-lg-az-trials-div .s-lg-label-moreinfo button,
+#s-lg-az-popular-div .s-lg-label-moreinfo button,
+#s-lg-az-trials-div .s-lg-az-result-badge-new,
+#s-lg-az-trials-div .s-lg-az-result-badge-trial,
+#s-lg-az-popular-div .s-lg-az-result-badge-popular {
+  display: none !important;
+}
+
+/* ---Media queries for A-Z page--- */ 
+
+@media screen and (max-width: 991px) {
+  #col-subjects, #col-types, #col-search {
+    width: 90%;
+    margin: 0em 0 1em 0;
+  }
+
+  #s-lg-az-filters select {
+    width: 100%;
+    margin: 0em 0 1em 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  
+  #s-lg-az-search-bar button.navbar-toggle {
+    border: 1px solid #000!important;
+    background-color: #fff!important;
+  }
+  
+  #s-lg-az-search-bar button.navbar-toggle.collapsed {
+    border: 1px solid #999 !important;
+  }
+
+  #s-lg-az-search-bar span.icon-bar {
+    border: 1px solid #999 !important;
+    color: #333 !important;
+  }
+}
+
+/**
+ * 5.1 Guides Home Page
+ * ----------------------------------------------------------------------------*/
+.nav .s-lg-index-nav-btn>button {
+  border: 1px solid #ccc;
+  background-color: #fff;
+  padding: 0.5em 1.5em;
+  border-radius: 5px;
+  font-weight: 400;
+}
+
+.nav .s-lg-index-nav-btn>button:hover {
+  box-shadow: 3px 3px 5px #bbb;
+  border-color: #777;
+}
+
+a.s-lg-hp-btn-section {
+  background-color: #007B89;
+  border: none;
+  margin-top: 0.75em;
+  color: #fff;
+  font-weight: 700;
+}
+
+/**
+ * 6.0 Other @media queries
+ * ----------------------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  #s-lib-bc {
+    display: none;
+  }
+
+  h1#s-lib-public-header-title {
+    margin: 0.25em 0 0.25em 0em;
+  }
+
+  #s-lib-public-header {
+    margin: 0em 0.75em 0em 0.75em;
+  }
+
+  #s-lib-public-main {
+    margin: -0.75em 0.75em 0em 0.75em;
+  }
+
+  #s-lg-hp-nav {
+    margin: -1em 0 0 0;
+  }
+
+  #s-lg-hp-nav ul {
+    padding: 0em 0;
+    margin: 0 0 -0.5em 0;
+  }
+
+  #s-lg-hp-nav ul li {
+    margin: 0.5em 0 0.5em 0;
+  }
+
+  #s-lg-hp-nav-bottom form {
+    padding: 0;
+    margin: -0.5em 0 -1.25em 0;
+  }
+
+  div#s-lg-box-18909832 {
+    margin: -10px 0 0 0;
+  }
+
+  ul.nav-stacked {
+    margin: 0 1em 1em 1em !important;
+    padding: 0em 0;
+  }
+
+  ul.nav-stacked:before {
+    content: "Guide Content";
+    font-size: 1.25em;
+    font-weight: bold;
+    padding: 0 0 0.25em 0;
+  }
+
+  ul.nav-stacked li {
+    margin: 0em 0;
+    padding: 0;
+    border: none;
+  }
+
+  ul.nav-stacked li a {
+    padding: 0.25em 1.25em !important;
+    font-size: 1em;
+    border-radius: 0px !important;
+  }
+
+  ul.nav-stacked li a:hover {
+    border-radius: 0px !important;
+  }
+
+  ul.nav-stacked {
+    margin-bottom: 1em !important;
+  }
+
+  ul.nav-stacked li {
+    margin: 0.5em 1em;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+  }
+
+  .s-lib-box-container {
+    margin: 0em 1em;
+  }
+}
+
+/**
+ * 7.0 LibChat styles
+ * ----------------------------------------------------------------------------*/
+
+/*--- Ask Us chat button ---*/
+.lcs_slide_out {
+  margin-top: 1%;
+}
+
+.lcs_slide_out header a {
+  font-size: 1.95rem !important;
+  font-weight: 400;
+  padding: 0 1em !important;
+}
+@media only screen and (max-width: 576px) {
+  .lcs_slide_out header a {
+    font-size: 1.0rem !important;
+    padding: 0 1em !important;
+  }
+}
+
+#s-lch-header-actions button i.fa.fa-fw {
+  font-size: 24px;
+}
+
+/**
+ * 8.0 @ font-face
+ * ----------------------------------------------------------------------------*/
+@font-face {
+  font-family: 'Adelle Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: url('//libapps.s3.amazonaws.com/sites/594/include/Adelle_Reg.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Adelle Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: url('//libapps.s3.amazonaws.com/sites/594/include/Adelle_Italic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Adelle Light Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: url('//libapps.s3.amazonaws.com/sites/594/include/Adelle_LightItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Adelle Light';
+  font-style: normal;
+  font-weight: normal;
+  src: url('//libapps.s3.amazonaws.com/sites/594/include/Adelle_light.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Adelle SemiBold Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: url('//libapps.s3.amazonaws.com/sites/594/include/Adelle_SemiBoldItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Adelle SemiBold';
+  font-style: normal;
+  font-weight: normal;
+  src: url('//libapps.s3.amazonaws.com/sites/594/include/Adelle_Semibold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Adelle Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: url('//libapps.s3.amazonaws.com/sites/594/include/Adelle_Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Adelle Bold Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: url('//libapps.s3.amazonaws.com/sites/594/include/Adelle_BoldItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Adelle ExtraBold';
+  font-style: normal;
+  font-weight: normal;
+  src: url('//libapps.s3.amazonaws.com/sites/594/include/Adelle_ExtraBold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Adelle ExtraBold Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: url('//libapps.s3.amazonaws.com/sites/594/include/Adelle_ExtraBoldItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Adelle Heavy';
+  font-style: normal;
+  font-weight: normal;
+  src: url('//libapps.s3.amazonaws.com/sites/594/include/Adelle_Heavy.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Adelle Heavy Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: url('//libapps.s3.amazonaws.com/sites/594/include/Adelle_HeavyItalic.woff') format('woff');
+}
+
+</style>
+                <!-- END: CUSTOM HEAD JS/CSS -->
+                <script>var system = {"name":"Subject & Course Guides"};
+            springSpace.publicObj = new springSpace.public.Public({
+                constant: {
+                    PROCESSING: {},
+                    CONTENT: {}
+                },
+                system_name: system.name,
+                customer: {"name":"Miami University"}
+            })
+            </script><!-- get_lg_session_status.twig -->
+<script>
+    springSpace.Session.CONST.ACTION_AUTH_SET_LG_SESSION_COOKIE = 750;
+
+    
+    callGetLGSessionStatus = function () {
+        springSpace.Session.auth_reload_script = window.location.href;
+        springSpace.Session.getLGSessionStatus({
+            url: "https://muohio.libapps.com/libapps/login_process.php",
+            data: {
+                action: 5,
+                app_id: 1,
+                domain: "libguides.lib.miamioh.edu",
+                site_id: 594,
+                auth_reload: 0
+            }
+        })
+    }
+
+    jQuery(
+        function () {
+                                    callGetLGSessionStatus();
+                    }
+    );
+    </script>
+<!-- !get_lg_session_status.twig -->
+<script>
+var springStats = springStats || {};
+springStats.saConfig = springStats.saConfig || {
+    site_id: 594,
+    tracking_parameters: {"_st_site_id":594},
+    tracking_server_host: "libguides-proc.springyaws.com"
+};
+</script>
+<script async  src="/web/js/sa.min.js?3116" ></script>
+                <script>
+                    springSpace.Common = springSpace.Common || { };
+                    springSpace.Common.constant = {
+                        PROCESSING: {
+                            ACTION_DISPLAY_POLL: 159
+                        }
+                    };
+                    springSpace.publicObj.constant.PROCESSING.ACTION_LOAD_GUIDE_LIST = 170;
+                    springSpace.publicObj.constant.CONTENT.HOME_GUIDES_TITLE = "Guides";
+                    springSpace.publicObj.homeNavButtons = {"170":"ALL GUIDES","171":"BY GROUP","172":"BY SUBJECT","173":"BY TYPE","174":"BY LIBRARIAN"};
+                    springSpace.publicObj.getCountType=function(action) {
+                        var count_type = "";
+                        switch (action) {
+                            case 176:
+                                count_type = "guidetype";
+                                break;
+                            case 177:
+                                count_type = "group";
+                                break;
+                            case 178:
+                                count_type = "owner";
+                                break;
+                        }
+                        return count_type;
+                    };
+                    
+                    springSpace.publicObj.loadGuideCounts=function(config) {
+                        jQuery.ajax({
+                            url: "/index_process.php?action=" + config.action + "&site_id=" + config.site_id + 
+                            (config.group_id ? "&group_id=" + config.group_id : ""),
+                            type: "GET",
+                            dataType: "json",
+                            success: function(response, textStatus, jqXHR) {
+                                if ( response.errCode == 200 ) {
+                                    var count_type = springSpace.publicObj.getCountType(config.action);
+                                    jQuery.each(
+                                        response.data, 
+                                        function(idx, elt) {
+                                            jQuery("#s-lg-index-" + count_type + "-" + elt.id).show();
+                                            jQuery("#s-lg-index-" + count_type + "-count-" + elt.id).html(elt.count);
+                                        }
+                                    );
+                                } else {
+                                    springSpace.UI.notify({mode: "custom", msg: "Error loading guide counts."});
+                                }
+                            },
+                            error: function (jqXHR, textStatus, errorThrown) {
+                                springSpace.UI.notify({mode: "custom", msg: "Error loading guide counts."});
+                            }
+                        });
+                    }
+                    
+                    var button_data = {"code":"s"};
+
+                    springSpace.homepage = {
+                        default_list_order: "a",
+                        current_list: 172,
+                        current_btn_id: "s-lg-index-subject-btn",
+                        current_num_cols: 1,
+                        current_type_label: "",
+                        current_button_code: button_data.code,
+                        group_id: 0,
+				        historyEdited: false,
+                        initPushState: function() {
+                            if (window.history && history.pushState) {
+                                jQuery(window).bind("popstate", function(e) {
+                                    // Don't reload list if this is the result of a skip link hash update.
+                                    if ( springSpace.homepage.historyEdited ) {
+                                        // location.search will return URL encoded values which will end up causing double-encoding when jQuery sends the loadAzList request.
+                                        var button_code = springSpace.Util.getQSParam({name: "b", qs: location.search});
+                                        var guide_display_code = springSpace.Util.getQSParam({name: "d", qs: location.search});
+                                        
+                                        // If there is no button code, go back to the default button
+                                        if (button_code === "") {
+                                            button_code = "s";
+                                        }
+                                        
+                                        springSpace.publicObj.loadHomepageList({
+                                            nav: "back",
+                                            action: springSpace.homepage.mapQSIdToActionId(button_code),
+                                            group_id: springSpace.homepage.group_id,
+                                            order: springSpace.homepage.mapQSIdToGuideSortId(guide_display_code),
+                                            num_cols: 1,
+                                            elt_id: "s-lg-index-list",
+                                            button_id: springSpace.homepage.mapQSIdToButtonEltId(button_code),
+                                            type_label: "Subjects",
+                                            display_sort: ( springSpace.homepage.mapQSIdToButtonEltId(button_code) === "s-lg-index-all-btn")
+                                        });
+                                    }
+                                });
+                            }
+                        },
+                        mapQSIdToButtonEltId: function(qs_id) {
+                            var button_ids = {
+                                "g": "s-lg-index-all-btn",
+                                "s": "s-lg-index-subject-btn",
+                                "t": "s-lg-index-guidetype-btn",
+                                "o": "s-lg-index-owner-btn",
+                                "p": "s-lg-index-group-btn",
+                            };
+                            springSpace.Util.setObjProp(qs_id, "", button_ids);
+                            
+                            return button_ids[qs_id];
+                        },
+                        mapQSIdToActionId: function(qs_id) {
+                            var button_ids = {
+                                "g": "170",
+                                "s": "172",
+                                "t": "173",
+                                "o": "174",
+                                "p": "171",
+                            };
+                            springSpace.Util.setObjProp(qs_id, "", button_ids);
+                            
+                            return button_ids[qs_id];
+                        },
+                        mapButtonEltIdToQSId: function(btn_elt_id) {
+                            var button_ids = {
+                                "s-lg-index-all-btn": "g",
+                                "s-lg-index-subject-btn": "s",
+                                "s-lg-index-guidetype-btn": "t",
+                                "s-lg-index-owner-btn": "o",
+                                "s-lg-index-group-btn": "p",
+                            };
+                            springSpace.Util.setObjProp(btn_elt_id, "", button_ids);
+                            
+                            return button_ids[btn_elt_id];
+                        },
+                        mapQSIdToGuideSortId: function(qs_id) {
+                            var sort_ids = {
+                                "a": "0",
+                                "r": "2",
+                                "p": "3"
+                            };
+                            springSpace.Util.setObjProp(qs_id, "", sort_ids);
+                            
+                            return sort_ids[qs_id];
+                        },
+                        mapGuideSortIdToQSId: function(sort_id) {
+                            var sort_ids = {
+                                "0": "a",
+                                "2": "r",
+                                "3": "p"
+                            };
+                            springSpace.Util.setObjProp(sort_id, "", sort_ids);
+                            
+                            return sort_ids[sort_id];
+                        },
+                        processPushState: function(config) {
+                            if (history.pushState) {
+                                // Only call pushState if this is a call to navigate forward (link, etc.), not back or initial load.
+                                if ( config.nav !== "back" && config.nav !== "init" ) {
+                                    // Only add display code to URL if on the guides button.
+                                    var qs_config = (
+                                        springSpace.homepage.current_button_code === "g" ?
+                                        { button_code: springSpace.homepage.current_button_code,
+                                          guide_display_code: springSpace.homepage.default_list_order } : 
+                                        { button_code: springSpace.homepage.current_button_code }
+                                    );
+                                    
+                                    var url = location.pathname + springSpace.homepage.buildQS(qs_config);
+                                    history.pushState({}, null, url);
+                                }
+                            }
+                            
+                            // Set flag to indicate history has been updated.
+                            springSpace.homepage.historyEdited = true;				
+                        },
+                        buildQS: function(config) {
+                            var params = {
+                                b: springSpace.Util.setProp(config.button_code, ""),
+                                d: springSpace.Util.setProp(config.guide_display_code, "")
+                            };
+                            
+                            // If on the default button, do not add the code
+                            if (params.b === "s") {
+                                return "";
+                            }
+
+                            // Add group_id to query string if supplied.
+                            if (springSpace.homepage.group_id) {
+                                params.group_id = springSpace.homepage.group_id;                            
+                            } 
+                            
+                            var qs_params = [];
+                            
+                            jQuery.each(params, function(idx, val) {
+                                if ( val !== "" && val !== "0") { 
+                                    qs_params.push(idx + "=" + encodeURIComponent(val));
+                                }
+                            });
+                    
+                            return ( qs_params.length == 0 ? "" : "?" + qs_params.join("&") );
+                        }
+                    };
+                    
+                    jQuery(function() {
+                        // Initialize pushState handling.
+                        springSpace.homepage.initPushState();
+                        
+						// Clear out the search term from previous search/back button.
+						jQuery("#s-lg-guide-search").val("");
+						
+						// Load guide list.
+						springSpace.publicObj.loadHomepageList({
+                            action: springSpace.homepage.current_list,
+                            group_id: "0",
+                            order: springSpace.homepage.mapQSIdToGuideSortId(springSpace.homepage.default_list_order),
+                            num_cols: 1,
+                            elt_id: "s-lg-index-list",
+                            button_id: springSpace.homepage.current_btn_id,
+                            type_label: "Subjects",
+                            display_sort: ( springSpace.homepage.current_btn_id === "s-lg-index-all-btn"),
+                            nav: "init"
+                        });
+
+                        // Select default dropdown option.
+                        jQuery("#s-lg-guide-order > option[value=" + springSpace.homepage.mapQSIdToGuideSortId(springSpace.homepage.default_list_order) + "]").prop("selected",true);
+
+                        // Load guide type counts.
+                        springSpace.publicObj.loadGuideCounts({
+                            action: 176,
+                            site_id: 594,
+                            group_id: 0
+                        });
+
+                        // Load group guides counts.
+                        springSpace.publicObj.loadGuideCounts({
+                            action: 177,
+                            site_id: 594
+                        });
+
+						   // Load owner group counts.
+                        springSpace.publicObj.loadGuideCounts({
+                            action: 178,
+                            site_id: 594,
+							   group_id: 0
+                        }	);
+                    });
+                    jQuery(function() {jQuery(window).one('load', function() {springSpace.springTrack.trackPage({_st_type_id: '11'});});
+                        });
+                </script>
+                
+                </head><body class="s-lib-public-body">
+		<a id="s-lg-public-skiplink" class="alert-info" href="#s-lib-public-main">Skip to main content</a>
+<div id="page-content">
+        <!-- BEGIN: Page Header -->
+            <nav id="libguides-navbar" class="navbar navbar-inverse" role="navigation" aria-label="main">
+
+  <div id="superNav">
+    <!-- superNav menu -->
+    <div class="container">
+
+
+    <!--  <ul class="regionals">
+       
+        <li class="nav-item"><a href="https://www.ham.miamioh.edu/library/"><i class="fa fa-home">&nbsp;</i>Hamilton</a></li>
+        <li class="nav-item"><a href="https://www.mid.miamioh.edu/library/"><i class="fa fa-home">&nbsp;</i>Middletown</a></li>
+      </ul>-->
+
+      <ul class="library-links">
+ <li class="nav-item"><a href="https://mymiami.miamioh.edu"><i class="fa fa-home">&nbsp;</i>myMiami</a></li>
+        <li class="nav-item"><a href="https://holmes.lib.miamioh.edu/patroninfo.html"><i class="fa fa-book">&nbsp;</i>My <span class="hide-library">Library </span>Account</a></li>
+        <li class="nav-item d-none d-sm-inline-flex giveToLibrary">
+          <a href="https://www.givetomiamioh.org/s/916/16/interior-flah.aspx?sid=916&gid=1&pgid=5141">
+            <i class="fa fa-gift"></i>&nbsp;Give to the Libraries</a>
+        </li>
+        <li class="nav-item">
+          <div class="gcse-search"></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="navbar-header">
+
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-libguides" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://www.lib.miamioh.edu">
+        <img src="https://libapps.s3.amazonaws.com/accounts/160520/images/FSV_REV_186KW_UNLBRYS.png" class="img-fluid" alt="Miami University Libraries"></a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbar-collapse-libguides">
+
+      <ul class="nav navbar-nav">
+        <!-- Research and Support menu -->
+
+        <li class="dropdown nav-item">
+          <a class="dropdown-toggle nav-title" data-toggle="dropdown" role="button" id="research-menu" href="#">Research and Support <span class="caret"></span></a>
+
+          <ul id="research-dropdown" class="dropdown-menu" aria-labeledby="research-menu" role="menu">
+            <div class="container">
+              <li class="col-md-3 col-sm-6">
+                <ul class="multi-column-dropdown list-unstyled">
+
+                  <li id="find-submenu-title" class="title"><strong>Find</strong></li>
+                  <li><a href="https://www.lib.miamioh.edu/research/find/guides/">Research Guides</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/research/find/databases/">Databases A-Z</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/research/find/onesearch/">OneSearch</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/research/find/articles/">Articles and More</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/research/find/books/">Books and More</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/research/find/encyclopedias/">Encyclopedias and Dictionaries</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/digital-collections/">Digital Collections</a></li>
+
+                </ul>
+
+              </li>
+
+              <li class="col-md-3 col-sm-6">
+                <ul class="multi-column-dropdown list-unstyled">
+                  <li id="research-support-submenu-title" class="title"><strong>Research Support</strong></li>
+                  <li><a href="https://www.lib.miamioh.edu/research/research-support/academic-integrity/">Academic Integrity</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/research/research-support/citation/">Citation Resources</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/research/research-support/ask/">Ask a Librarian</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/research/research-support/copyright/">Copyright</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/research/research-support/workshops/">Research Workshops</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/research/research-support/hcw/">Howe Writing Center</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/research/research-support/stats-help/">Statistics Help Desk</a>
+                </ul>
+              </li>
+
+              <li class="col-md-3 col-sm-6">
+                <ul class="multi-column-dropdown list-unstyled">
+                  <li id="instruction-support-submenu-title" class="title"><strong>Instruction Support</strong></li>
+                  <li><a href="https://www.lib.miamioh.edu/research/instruction/library-instruction/">Library Instruction</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/research/instruction/credo-instruct/">Information Literacy Modules</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/research/instruction/course-reserves/">Course Reserves</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/research/instruction/oer/">Open Educational Resources</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/research/instruction/accessibility/">Accessibility Resources</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/research/instruction/videos/">Instructional Videos</a></li>
+                  <li><a href="https://lor.lib.miamioh.edu/">Learning Object Repository</a></li>
+                </ul>
+              </li>
+
+              <li class="col-md-3 col-sm-6">
+                <ul class="multi-column-dropdown list-unstyled">
+                  <li id="create-submenu-title" class="title"><strong>Creation</strong></li>
+                  <li><a href="https://www.lib.miamioh.edu/research/creation/makerspace/">MakerSpace</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/research/creation/digital-scholarship/">Digital Scholarship</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/research/creation/data-services/">Data Services</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/research/creation/scholarly-commons/">Scholarly Commons</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/research/creation/dv-vr/">Virtual Reality</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/research/creation/cre-copyright/">Copyright</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/research/creation/cre-workshops/">Creation Workshops</a></li>
+                </ul>
+              </li>
+            </div>
+          </ul>
+        </li>
+
+        <!-- Using the Libraries menu -->
+
+        <li class="dropdown nav-item">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" id="using-menu" href="#">Using the Libraries <span class="caret"></span></a>
+          <ul id="using-dropdown" class="dropdown-menu" aria-labeledby="using-menu" role="menu">
+            <div class="container">
+              <li class="col-md-3 col-sm-6">
+                <ul class="multi-column-dropdown list-unstyled">
+                  <li id="borrowing-submenu-title" class="title"><strong>Borrowing and Requests</strong></li>
+                  <li><a href="https://www.lib.miamioh.edu/use/borrow/policies/">Borrowing Policies</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/use/borrow/reserves/">Reserves and Textbooks</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/use/borrow/ill/">Interlibrary Loan and Storage Requests</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/use/borrow/curbside/">Curbside Services</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/use/borrow/department-delivery/">Department/Dorm Delivery</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/use/borrow/home-delivery/">Home Delivery</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/use/borrow/lola/">Limited Online Library Access Lending Service</a></li>
+                </ul>
+              </li>
+
+              <li class="col-md-3 col-sm-6" role="menu">
+                <ul class="multi-column-dropdown list-unstyled">
+                  <li id="spaces-submenu-title" class="title"><strong>Spaces</strong></li>
+                  <li><a href="https://www.lib.miamioh.edu/use/spaces/room-reservations/">Study Rooms</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/use/spaces/computer-labs/">Computer Availability</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/use/spaces/makerspace/">MakerSpace</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/use/spaces/remote-lab/">Remote Lab</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/use/spaces/reading-rooms/">Faculty and Graduate Reading Room</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/use/spaces/hwc/">Howe Writing Center</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/use/spaces/king-cafe/">King Cafe</a></li>
+                </ul>
+              </li>
+
+              <li class="col-md-3 col-sm-6">
+                <ul class="multi-column-dropdown list-unstyled">
+                  <li id="technology-submenu-title" class="title"><strong>Technology</strong></li>
+                  <li><a href="https://www.lib.miamioh.edu/use/technology/tech-checkout/">Tech for Checkout</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/use/technology/software/">Available Software</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/use/technology/printing/">Printing and WiFi</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/use/technology/3d-printing-services/">3D Printing</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/use/technology/av-production/">Audio-Video Production</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/use/technology/tech-data-services/">Data Services</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/use/technology/virtual-reality/">Virtual Reality</a></li>
+                </ul>
+              </li>
+
+
+
+              <li class="col-md-3 col-sm-4">
+                <ul class="multi-column-dropdown list-unstyled">
+                  <li id="services-for-submenu-title" class="title"><strong>Services for...</strong></li>
+                  <li><a href="https://www.lib.miamioh.edu/use/services/faculty/">Faculty</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/use/services/graduateStudents/">Graduate Students</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/use/services/newStudents/">New Students</a></li>
+                  <hr>
+                  <li><a href="https://www.lib.miamioh.edu/use/services/libraryhealthy/">Healthy Together at the University Libraries</a></li>
+                </ul>
+              </li>
+            </div>
+          </ul>
+        </li>
+
+        <!-- About menu -->
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" id="about-menu" href="#">About <span class="caret"></span></a>
+          <ul id="about-dropdown" class="dropdown-menu" aria-labeledby="about-menu" role="menu">
+            <div class="container">
+              <li class="col-lg-4 col-sm-6">
+                <ul class="multi-column-dropdown list-unstyled">
+                  <li id="hours-submenu-title" class="title"><strong>Locations &amp; Hours</strong></li>
+                  <li><a href="https://www.lib.miamioh.edu/about/locations/hours/">Library Hours</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/about/locations/king-library/">King Library</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/about/locations/art-arch/">Wertz Art & Architecture Library</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/about/locations/music-library/">Amos Music Library</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/about/locations/special-collections-archives/">Special Collections and University Archives</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/about/locations/regional/">Regional Libraries</a></li>
+                  <li style="border-top:1px solid #999; padding-top:0.5em;margin-top:0.5em; width:90%;"><a href="https://develop.lib.miamioh.edu/2020/07/01/BEST-library-close.html">B.E.S.T. Library Closure</a></li>
+                </ul>
+              </li>
+
+              <li class="col-lg-4 col-sm-6">
+                <ul class="multi-column-dropdown list-unstyled">
+                  <li id="organization-submenu-title" class="title"><strong>Our Organization</strong></li>
+                  <li><a href="https://www.lib.miamioh.edu/about/organization/contact-us/">Contact Us</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/about/organization/staff/">Staff Directory</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/about/organization/liaisons/">Subject Librarians</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/about/organization/deans-office/">Welcome from the Dean</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/about/organization/employment/">Employment</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/about/organization/policies/">Policies</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/about/organization/faqs/">FAQs</a></li>
+                </ul>
+              </li>
+
+              <li class="col-lg-4 col-sm-5">
+                <ul class="multi-column-dropdown list-unstyled">
+                  <li id="news-submenu-title" class="title"><strong>News and Events</strong></li>
+                  <li><a href="https://www.lib.miamioh.edu/about/news-events/news/">Library News</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/about/news-events/events-exhibits/">Events and Exhibits</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/about/news-events/social/">Social Media</a></li>
+                  <li><a href="https://www.lib.miamioh.edu/about/news-events/support/">Support the Libraries</a></li>
+                  <li style="border-top:1px solid #999; padding-top:0.5em;margin-top:0.5em;width:90%;"><a href="https://develop.lib.miamioh.edu/about/news-events/coronavirus/">COVID-19 (novel coronavirus) updates and resources</a></li>
+
+                </ul>
+              </li>
+            </div>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+        <!-- END: Page Header -->
+        <!-- BEGIN: Content Header -->
+        <div id="s-lib-public-header" class="s-lib-header container s-lib-side-borders">
+            <div id="s-lib-bc">
+                
+			<ol id="s-lib-bc-list" class="breadcrumb">
+				
+					<li id="s-lib-bc-customer">
+						<a title="Miami University Libraries"  href="https://www.lib.miamioh.edu/">Miami University Libraries
+						</a>
+					</li>
+					<li id="s-lib-bc-site">
+						<a title="Subject &amp; Course Guides"  href="https://libguides.lib.miamioh.edu/">Subject & Course Guides
+						</a>
+					</li>
+					<li id="s-lib-bc-page" class="active">Home
+					</li>
+			</ol>
+            </div>
+            <h1 id="s-lib-public-header-title">Subject & Course Guides
+</h1>
+            <div id="s-lib-public-header-desc">Browse for guides alphabetically, by type (subject, course, or topic) or by librarian.
+</div>
+        </div>
+        <!-- END: Content Header -->
+        <!-- BEGIN: Nav Bar -->
+        <div id="s-lib-public-nav" class="container s-lib-side-borders">
+            
+        </div>
+        <!-- END: Nav Bar -->
+        <!-- BEGIN: content -->
+        <div id="s-lib-public-main" class="s-lib-main container s-lib-side-borders">
+            <div  id="s-lg-index-cols"  class="row">
+                <div  id="col1"  class="col-md-8 center">
+                    <div class="clearfix">
+                        <div id="s-lg-hp-nav">
+                            <ul>
+                                <li>
+                                    <ul class="nav nav-pills">
+                                        <li id="s-lg-index-all-btn" class="s-lg-index-nav-btn active">
+                            <button type="button" class="btn" onclick="springSpace.publicObj.loadHomepageList({
+									action: 170,
+									group_id: 0,
+									order: jQuery('#s-lg-guide-order').val(),
+									num_cols: 1,
+									elt_id: 's-lg-index-list',
+									button_id: 's-lg-index-all-btn',
+									display_sort: true
+								});"
+							>ALL GUIDES</button>
+                        </li>
+                                        <li id="s-lg-index-subject-btn" class="s-lg-index-nav-btn">
+							<button type="button" class="btn" onclick="springSpace.publicObj.loadHomepageList({
+                                action: 172,
+								group_id: 0,
+								num_cols: 1,
+								type_label: 'Subjects',
+                                elt_id: 's-lg-index-list',
+                                button_id: 's-lg-index-subject-btn',
+                      		});">BY SUBJECT</button>
+						</li>
+                                        <li id="s-lg-index-guidetype-btn" class="s-lg-index-nav-btn">
+							<button type="button" class="btn" onclick="springSpace.publicObj.loadHomepageList({
+								action: 173,
+								group_id: 0,
+								num_cols: 1,
+								type_label: 'Guide Types',
+								elt_id: 's-lg-index-list',
+								button_id: 's-lg-index-guidetype-btn',
+							});">BY TYPE</button>
+						</li>
+                                        <li id="s-lg-index-owner-btn" class="s-lg-index-nav-btn">
+							<button type="button" class="btn" onclick="springSpace.publicObj.loadHomepageList({
+								action: 174,
+								group_id: 0,
+								num_cols: 1,
+								type_label: 'Guide Owners',
+								elt_id: 's-lg-index-list',
+								button_id: 's-lg-index-owner-btn',
+							});">BY LIBRARIAN</button>
+						</li>
+                                    </ul>
+                                </li>
+                                <li id="s-lg-hp-nav-bottom">
+                                    <div class="clearfix">
+                                        
+			<form role="search" class="form-inline pull-right" action="/srch.php">
+				<span>
+					Search:
+				</span>
+				<div class="form-group">
+					<div class="s-lg-public-search-field">
+						<label class="control-label sr-only" for="s-lg-guide-search">Enter Search Words</label>
+						<div class="input-group">
+							<input type="text" id="s-lg-guide-search" name="q" class="form-control"
+							placeholder="Enter Search Words" aria-label="Enter Search Words"/>
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="submit">Search</button>
+							</span>
+						</div>
+					</div>
+				</div>
+			</form>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+			<div id="s-lg-guide-list-controls">
+				<div class="pull-left">
+					<h2 id="s-lg-index-list-header" class="muted"></h2>
+				</div>
+				<div class="pull-right muted">
+                    <div class="form-inline" id="form-group-s-lg-guide-order">
+                        <div class="form-group">
+                            <label for="s-lg-guide-order">Display</label>
+                            <select id="s-lg-guide-order" name="s-lg-guide-order" class="form-control">
+                                <option value="0">Alphabetically</option>
+                                <option value="3">By Popularity</option>
+                                <option value="2">Most Recent</option>
+                            </select>
+                        </div>
+                        <button type="button" class="btn btn-default" onclick="springSpace.publicObj.loadHomepageList({
+                            action: 170,
+                            group_id: 0,
+                            order: jQuery('#s-lg-guide-order').val(),
+                            num_cols: 1,
+                            elt_id: 's-lg-index-list',
+                            button_id: 's-lg-index-all-btn',
+                            display_sort: true,
+                            type_label: springSpace.homepage.current_type_label
+                        });">Go</button>
+                    </div>
+				</div>
+			</div>
+                    </div>
+                    <div id="s-lg-index-list" class="">
+                        Loading...
+                    </div>
+                </div>
+                <div  id="col2"  class="col-md-4 center">
+                    <div class="margin-bottom-xlg"><div class="s-lib-public-side-header"><h2 class="pad-bottom-sm">Databases A-Z</h2></div><div class="txt pad-top-sm">A complete A-Z listing of our databases encompassing thousands of journals, data sets, newspapers, and business reports.</div><a href="/az.php" class="btn btn-info s-lg-hp-btn-section">Go to Databases A-Z</a></div><div class="margin-bottom-xlg"><div class="s-lib-public-side-header"><h2 class="pad-bottom-sm">Ask Us!</h2></div><div class="txt pad-top-sm">
+			<div id="s-lg-content-35243378" class="s-lg-widget "><script src="https://v2.libanswers.com/load_chat.php?hash=878cd71239b8d4dff09ff2d5a93e2b19"></script>
+<div id="libchat_878cd71239b8d4dff09ff2d5a93e2b19"></div>
+		   </div></div></div>
+                </div>
+            </div>
+        </div>
+</div>
+        <!-- END: content -->
+        <!-- BEGIN: Page Footer -->
+        <div id="s-lib-footer-public" class="s-lib-footer footer container s-lib-side-borders"><div><div id="s-lib-footer-brand">Powered by Springshare.</div><div id="s-lib-footer-rights">All rights reserved.</div><div id="s-lib-footer-login-link"><a href="https://muohio.libapps.com/libapps/login.php?site_id=594">Login to LibApps</a></div></div><div id="s-lib-footer-support-link"><a href="https://www.lib.miamioh.edu/feedback">Report a problem.</a></div></div></div>
+        <!-- END: Page Footer -->
+        <div id="s-lib-alert" title="">
+                            <div id="s-lib-alert-content"></div>
+                       </div>        
+                <div id="s-lib-popover-title" class="hide">
+                    <span class="text-info"><strong>title</strong></span>
+                    <button type="button" id="popclose" class="close" onclick="jQuery('.s-lib-popover').popover('hide')">&times;</button>
+                </div>
+                <div id="s-lib-popover-content" class="hide"><i class="fa fa-refresh fa-spin"></i> Loading...
+                    <button class="btn btn-default btn-sm popclose" type="button">Close</button>
+                </div>        
+			<div id="s-lib-scroll-top">
+				<a href="javascript:void(0);" onclick="jQuery('html, body').animate({scrollTop: 0}, 750);" title="Back to Top" aria-label="Back to Top"
+				aria-hidden="true">
+					<span class="fa-stack fa-lg">
+					  <i class="fa fa-square-o fa-stack-2x"></i>
+					  <i class="fa fa-angle-double-up fa-stack-1x" style="position:relative; bottom:2px;"></i>
+					</span>
+				</a>
+			</div>        <!-- BEGIN: Custom Footer -->
+        
+<footer class="footer d-none d-sm-block">
+  <hr style="border: 1px solid #941728; margin-bottom:0em;">
+  <hr style="border: 3px solid #941728; margin:0.2em 0em 0.6em 0em">
+  <div class="container-fluid footer-container">
+    <div class="container justify-content-center">
+      <div class="row" style="padding-top:1em;">
+        <h1 class="sr-only">Frequently Asked Questions</h1>
+        <div class="col-md-3 col-sm-6 col-xs-6">
+          <h2 class="sr-only">Contact Information</h2>
+          <img src="https://www.lib.miamioh.edu/images/FSL_REV_UNLBRYS.png" alt="Miami University Libraries" class="footer-logo">
+          <address>
+          <!--  <p class="library-name">
+              <font size="+1"><strong>Miami University Libraries</strong></font>
+            </p>-->            
+            <p>151 South Campus Avenue<br>
+              Oxford, Ohio 45056</p>
+              <p><a href="tel:+15135294141"><abbr title="Phone" aria-label="Phone number">P:</abbr> (513) 529-4141</a><p>
+          </address>
+          <p class="give-to-the-library"><a href="https://www.givetomiamioh.org/s/916/16/interior-flah.aspx?sid=916&gid=1&pgid=5141">
+              <i class="fa fa-gift"></i> Give to the Libraries</a></p>
+<p><a href="https://www.miamioh.edu">Miami University</a></p>
+        </div>
+
+        <div class="col-md-3">
+          <h2 class="footer-header">Libraries & Collections</h2>
+          <ul class="hidden-sm hidden-xs">
+            <li><a href="https://www.lib.miamioh.edu/about/locations/king-library/">King Library</a></li>
+            <li><a href="https://www.lib.miamioh.edu/about/locations/art-arch/">Wertz Art & Architecture Library</a></li>
+            <li><a href="https://www.lib.miamioh.edu/about/locations/music-library/">Amos Music Library</a></li>
+            <li><a href="https://www.lib.miamioh.edu/about/locations/special-collections-archives/" rel="external">Walter Havighurst Special Collections</a></li>
+            <li><a href="http://archives.lib.miamioh.edu/">University Archives</a></li>
+            <li><a href="http://westernarchives.lib.miamioh.edu/">Western College Archives</a></li>
+            <li><a href="https://www.lib.miamioh.edu/about/locations/regional/">Regional Libraries</a></li>
+          </ul>
+          <ul style="border-top 1px solid #555;"><li><a href="https://www.lib.miamioh.edu/2020/07/01/BEST-library-close.html">B.E.S.T. Library Closure</a></li></ul>
+        </div>
+
+        <div class="col-md-3  col-sm-3 col-xs-6 align-right">
+          <h2 class="footer-header">Policies</h2>
+          <ul class="hidden-sm hidden-xs">
+            <li><a href="https://www.lib.miamioh.edu/about/organization/policies/">Policies</a></li>
+            <li><a href="https://www.lib.miamioh.edu/about/organization/faqs/">Frequently Asked Questions</a></li>
+            <li><a href="https://www.lib.miamioh.edu/research/instruction/accessibility/">Accessibility Services</a></li>
+            <li><a href="https://www.lib.miamioh.edu/website-feedback/">Feedback</a></li></ul>
+          <ul>
+            <li><a href="https://libguides.lib.miamioh.edu/manual">Staff Area</a></li>
+            <li><a href="https://holmes.lib.muohio.edu/patroninfo.html">My Library Account</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-3  col-sm-3 hidden-sm hidden-xs align-right">
+          <h2 class="footer-header">Follow Us</h2>
+          <ul class="hidden-sm hidden-xs">
+            <li><a href="http://twitter.com/miamiulibraries"><i class="fa fa-twitter"></i> Twitter</a></li>
+            <li><a href="http://facebook.com/mulibraries"><i class="fa fa-facebook-f"></i>  Facebook</a></li>
+            <li><a href="https://www.flickr.com/photos/muohio_digital_collections/"><i class="fa fa-flickr"></i> Flickr</a></li>
+            <li><a href="http://instagram.com/miamiulibraries"><i class="fa fa-instagram"></i> Instagram</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+        <!-- END: Custom Footer -->
+
+<div id="libchat_48597dfc1078556815ee78d6e99e7a7b"></div>
+<script src="https://v2.libanswers.com/load_chat.php?hash=48597dfc1078556815ee78d6e99e7a7b"></script>
+
+	<!-- BEGIN: Analytics code --><!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-634721-5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-634721-5');
+</script>
+
+<!-- User Heat Tag -->
+<script type="text/javascript">
+(function(add, cla){window['UserHeatTag']=cla;window[cla]=window[cla]||function(){(window[cla].q=window[cla].q||[]).push(arguments)},window[cla].l=1*new Date();var ul=document.createElement('script');var tag = document.getElementsByTagName('script')[0];ul.async=1;ul.src=add;tag.parentNode.insertBefore(ul,tag);})('//uh.nakanohito.jp/uhj2/uh.js', '_uhtracker');_uhtracker({id:'uhe1vsClsT'});
+</script>
+<!-- End User Heat Tag --><!-- END: Analytics code --></body></html>
