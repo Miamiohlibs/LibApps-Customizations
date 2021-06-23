@@ -1234,6 +1234,9 @@ a.s-lg-hp-btn-section {
 /* 
 * 5.2 Panel from BS3 crosswalk css
 * -----------------------------------------------------*/
+.hide {
+  display: none !important;
+}
 
 .panel {
   margin-bottom: 20px;
