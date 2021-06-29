@@ -1691,7 +1691,7 @@ a.s-lg-hp-btn-section {
   font-weight: 700;
 }
 
-#s-lg-index-list-subjects .panel  {margin-bottom: 0.65em;}
+#s-lg-index-list .panel  {margin-bottom: 0.65em;}
 
 /* 
 * 5.2 BS3 crosswalk css
@@ -1905,13 +1905,13 @@ a.s-lg-hp-btn-section {
 }
 
 
-#s-lg-index-list-subjects .collapse {
+#s-lg-index-list .collapse {
   display: none;
 }
-#s-lg-index-list-subjects .collapse.in {
+#s-lg-index-list .collapse.in {
   display: block;
 }
-#s-lg-index-list-subjects .collapsing {
+#s-lg-index-list .collapsing {
   position: relative;
   height: 0;
   overflow: hidden;
