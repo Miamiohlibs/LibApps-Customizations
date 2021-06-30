@@ -401,7 +401,6 @@ $('.list-unstyled li hr').each(function() {
 
 
 <style>
-
 /** ----------------------------------------------------------------
  * Table of Contents (CSS):
  * 1.0 - Basic
@@ -434,6 +433,7 @@ body {
   margin: 0;
   padding: 0;
 border-top: 4px solid #424242;
+  font-size: 14px;
 }
 
 p,
@@ -509,6 +509,7 @@ div.s-lib-box {
   background-color:#c3142d!important;
   border-top: 5px solid #424242;
   padding: 0 0 0.15em 0;
+  margin-top: 0;
 }
 
  .site-header {
@@ -688,6 +689,15 @@ div.s-lib-box {
   }
   
  
+  .container {
+    max-width: 96%;
+ }
+ 
+  .site-header {
+    margin-top: -1em;
+    border-top: 3px solid black;
+  }
+
   
   #main3nav .dropdown-menu {
     width: 98%;
@@ -762,6 +772,8 @@ margin:0;
     height: auto;
    }
 }
+
+
 
 
 /**
@@ -1285,7 +1297,11 @@ address {
 #s-lg-az-search-bar .container-fluid {
   padding: 0 1.5em 0.75em 1.5em;
 }
-#s-lg-az-filters select {height: 2.35em; width: 100%;}
+#s-lg-az-filters select {
+  height: 2.35em; 
+  width: 100%;
+  font-size:1.125em;
+}
 
 #s-lg-az-filters select::after {
   display: inline-block;
@@ -1295,6 +1311,8 @@ address {
   background-repeat: no-repeat;
   background-size: 1rem 1rem;
 }
+
+
 
 @media screen and (min-width:768px) {
    #s-lg-az-search-bar button.navbar-toggle {display: none;}  
@@ -1635,12 +1653,11 @@ font-size: 1.5em;
 
 @media screen and (max-width: 768px) {
 
-  #s-lg-az-nav-1 nav.navbar-collapse {
+  #s-lg-az-nav-1 {
     display: block;
     height: auto;
     border: none;
-    padding:0;
-    margin: 0 auto;
+    margin: 0 0em 0 1.25em;
   }
  
  
