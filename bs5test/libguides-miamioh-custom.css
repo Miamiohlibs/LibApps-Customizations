@@ -402,7 +402,6 @@ $('.list-unstyled li hr').each(function() {
 
 <style>
 
-
 /** ----------------------------------------------------------------
  * Table of Contents (CSS):
  * 1.0 - Basic
@@ -694,6 +693,7 @@ div.s-lib-box {
     width: 98%;
     left: auto;
     right: 1%;
+margin:0;
   }
   .site-header .nav-title {
     font-size: 23px;
@@ -762,8 +762,6 @@ div.s-lib-box {
     height: auto;
    }
 }
-
-
 
 
 /**
@@ -1297,6 +1295,7 @@ address {
   background-repeat: no-repeat;
   background-size: 1rem 1rem;
 }
+
 @media screen and (min-width:768px) {
    #s-lg-az-search-bar button.navbar-toggle {display: none;}  
 }
@@ -1613,36 +1612,38 @@ font-size: 1.5em;
   display: none !important;
 }
 
+
+
 /* ---Media queries for A-Z page --- */
 
 @media screen and (max-width: 991px) {
   #col-subjects,
   #col-types,
   #col-search {
-    width: 90%;
-    margin: 0em 0 1em 0;
-  }
-
-  #s-lg-az-filters select {
     width: 100%;
-    margin: 0em 0 1em 0;
+    margin: 0em auto 1em auto;
   }
+ 
+   #s-lg-az-search-bar {
+    height: auto;
+  }
+  #s-lg-az-search-bar button.navbar-toggle {
+    display: none;
+  }
+    
 }
 
 @media screen and (max-width: 768px) {
-  #s-lg-az-search-bar button.navbar-toggle {
-    border: 1px solid #000 !important;
-    background-color: #fff !important;
-  }
 
-  #s-lg-az-search-bar button.navbar-toggle.collapsed {
-    border: 1px solid #999 !important;
+  #s-lg-az-nav-1 nav.navbar-collapse {
+    display: block;
+    height: auto;
+    border: none;
+    padding:0;
+    margin: 0 auto;
   }
-
-  #s-lg-az-search-bar span.icon-bar {
-    border: 1px solid #999 !important;
-    color: #333 !important;
-  }
+ 
+ 
 }
 
 /**
@@ -2314,4 +2315,5 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   src: url("//libapps.s3.amazonaws.com/sites/594/include/Adelle_HeavyItalic.woff")
     format("woff");
 }
+
 </style>
