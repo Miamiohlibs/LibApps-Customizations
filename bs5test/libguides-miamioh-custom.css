@@ -143,6 +143,11 @@ Updated by: Jerry Yarnetsky
         });
     });
 
+$(function() {
+  $('#s-lg-srch-content').addClass('row col-12');
+});
+
+
     /* 
      * 0.4 - menu keyboard navigation
      *  --------------------------------------------------------------------------------------------
@@ -423,6 +428,9 @@ $('.list-unstyled li hr').each(function() {
  * ----------------------------------------------------------------------------
  */
 
+html {
+    overflow-y:auto;
+}
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -1302,17 +1310,6 @@ address {
   width: 100%;
   font-size:1.125em;
 }
-
-#s-lg-az-filters select::after {
-  display: inline-block;
-  content: "";
-  vertical-align: -.125em;
-  background-image: url("data:image/svg+xml,<svg viewBox='0 0 16 16' fill='currentColor' class='bi bi-caret-down' xmlns='http://www.w3.org/2000/svg'><path d='M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z'/></svg>");
-  background-repeat: no-repeat;
-  background-size: 1rem 1rem;
-}
-
-
 
 @media screen and (min-width:768px) {
    #s-lg-az-search-bar button.navbar-toggle {display: none;}  
