@@ -1,0 +1,187 @@
+<nav id="libguides-navbar" class="navbar navbar-inverse" role="navigation" aria-label="main">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-libguides" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="https://www.lib.miamioh.edu">
+          <img src="//www.lib.miamioh.edu/images/FSV_REV_W_UNLBRYS.png" width="150" height="110" class="img-fluid" alt="Miami University Libraries"></a>
+      </div>
+
+  <div class="collapse navbar-collapse" id="navbar-collapse-libguides">
+
+  
+    <ul id="superNav">
+      <li class="nav-item miamioh"><a href="https://www.miamioh.edu" style="color: white;">Miami University</a></li>
+      <li class="nav-item"><a href="https://mymiami.miamioh.edu" style="color: white;">myMiami</a></li>
+      <li class="nav-item"><a href="https://holmes.lib.miamioh.edu/patroninfo.html" style="color: white;">My <span class="hide-library">Library </span>Account</a></li>
+      <li class="nav-item d-none d-sm-inline-flex giveToLibrary"><a href="https://www.givetomiamioh.org/s/916/16/interior-flah.aspx?sid=916&gid=1&pgid=5141" style="color: white;">
+          <i class="fa fa-gift"></i>&nbsp;Give to the Libraries</a></li>
+      <li class="nav-item float-right">
+        <div class="gcse-search"></div>
+              </ul>
+
+      <ul class="nav navbar-nav">
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" id="research-menu" href="#">Research and Support <span class="caret"></span></a>
+              <ul id="research-dropdown" class="dropdown-menu" aria-labeledby="research-menu" role="menu">
+                <div class="container">
+                      <li class="col-md-3 col-sm-6" role="menu" aria-labelledby="find-submenu-title">
+                      <ul class="multi-column-dropdown">
+                      <li id="find-submenu-title" class="title"><strong>Find</strong></li>
+                      <li><a href="https://www.lib.miamioh.edu/research/find/guides/">Research Guides</a></li>
+                      <li><a href="https://www.lib.miamioh.edu/research/find/databases/">Databases A-Z</a></li>
+                      <li><a href="https://www.lib.miamioh.edu/research/find/onesearch/">OneSearch</a></li>
+                      <li><a href="https://www.lib.miamioh.edu/research/find/articles/">Articles and More</a></li>
+                      <li><a href="https://www.lib.miamioh.edu/research/find/books/">Books and More</a></li>
+                      <li><a href="https://www.lib.miamioh.edu/research/find/encyclopedias/">Encyclopedias and Dictionaries</a></li>
+                      <li><a href="https://www.lib.miamioh.edu/digital-collections/">Digital Collections</a></li>
+                        </ul>
+                        
+                  </li>
+
+                      <li class="col-md-3 col-sm-6" role="menu" aria-labelledby="research-support-submenu-title">
+                        <ul class="multi-column-dropdown">
+                    <li id="research-support-submenu-title" class="title"><strong>Research Support</strong></li>
+                    <li><a href="https://www.lib.miamioh.edu/research/research-support/academic-integrity/">Academic Integrity</a></li>
+                    <li><a href="https://www.lib.miamioh.edu/research/research-support/citation/">Citation Resources</a></li>
+                    <li><a href="https://www.lib.miamioh.edu/research/research-support/ask/">Ask a Librarian</a></li>
+                    <li><a href="https://www.lib.miamioh.edu/research/research-support/copyright/">Copyright</a></li>
+                    <li><a href="https://www.lib.miamioh.edu/research/research-support/workshops/">Research Workshops</a></li>
+                    <li><a href="https://www.lib.miamioh.edu/research/research-support/hcw/">Howe Writing Center</a></li>
+                        </ul>
+                      </li>
+
+                      <li class="col-md-3 col-sm-6" role="menu" aria-labelledby="instruction-support-submenu-title">
+                        <ul class="multi-column-dropdown">
+                          <li id="instruction-support-submenu-title" class="title"><strong>Instruction Support</strong></li>
+                          <li><a href="https://www.lib.miamioh.edu/research/instruction/library-instruction/">Library Instruction</a></li>
+                          <li><a href="https://www.lib.miamioh.edu/research/instruction/credo-instruct/">Information Literacy Modules</a></li>
+                          <li><a href="https://www.lib.miamioh.edu/research/instruction/course-reserves/">Course Reserves</a></li>
+                          <li><a href="https://www.lib.miamioh.edu/research/instruction/oer/">Open Educational Resources</a></li>
+                          <li><a href="https://www.lib.miamioh.edu/research/instruction/accessibility/">Accessibility Resources</a></li>
+                        </ul>
+                      </li>
+
+                      <li class="col-md-3 col-sm-6" role="menu" aria-labelledby="create-submenu-title">
+                        <ul class="multi-column-dropdown">
+                          <li id="create-submenu-title" class="title"><strong>Creation</strong></li>
+                          <li><a href="https://www.lib.miamioh.edu/research/creation/makerspace/">MakerSpace</a></li>
+                          <li><a href="https://www.lib.miamioh.edu/research/creation/digital-scholarship/">Digital Scholarship</a></li>
+                          <li><a href="https://www.lib.miamioh.edu/research/creation/data-services/">Data Services</a></li>
+                          <li><a href="https://www.lib.miamioh.edu/research/creation/dv-vr/">Virtual Reality</a></li>
+                          <li><a href="https://www.lib.miamioh.edu/research/creation/cre-copyright/">Copyright</a></li>
+                          <li><a href="https://www.lib.miamioh.edu/research/creation/cre-workshops/">Creation Workshops</a></li>
+                        </ul>
+                      </li>
+                      </div>
+                      </ul>
+            </li>
+
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" id="using-menu" href="#">Using the Libraries <span class="caret"></span></a>
+                <ul id="using-dropdown" class="dropdown-menu"  aria-labeledby="using-menu" role="menu">
+                  <div class="container">
+                    <li class="col-md-3 col-sm-6" role="menu" aria-labelledby="borrowing-submenu-title">
+                      <ul class="multi-column-dropdown">
+                        <li id="borrowing-submenu-title" class="title"><strong>Borrowing and Requests</strong></li>
+                        <li><a href="https://www.lib.miamioh.edu/use/borrow/policies/">Borrowing Policies</a></li>
+                        <li><a href="https://www.lib.miamioh.edu/use/borrow/reserves/">Reserves and Textbooks</a></li>
+                        <li><a href="https://www.lib.miamioh.edu/use/borrow/ill/">Interlibrary Loan and Storage Requests</a></li>
+                        <li><a href="https://www.lib.miamioh.edu/use/borrow/curbside/">Curbside Services</a></li>
+                      </ul>
+                    </li>
+
+      <li class="col-md-3 col-sm-6" role="menu" aria-labelledby="spaces-submenu-title">
+                      <ul class="multi-column-dropdown">
+                        <li id="spaces-submenu-title" class="title"><strong>Spaces</strong></li>
+                        <li><a href="https://www.lib.miamioh.edu/use/spaces/room-reservations/">Study Rooms</a></li>
+                        <li><a href="https://www.lib.miamioh.edu/use/spaces/computer-labs/">Computers and CIM Lab</a></li>
+                        <li><a href="https://www.lib.miamioh.edu/use/spaces/makerspace/">MakerSpace</a></li>
+                        <li><a href="https://www.lib.miamioh.edu/use/spaces/reading-rooms/">Faculty and Graduate Reading Room</a></li>
+                        <li><a href="https://www.lib.miamioh.edu/use/spaces/hwc/">Howe Writing Center</a></li>
+                        <li><a href="https://www.lib.miamioh.edu/use/spaces/king-cafe/">King Cafe</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="col-md-3 col-sm-6" role="menu" aria-labelledby="technology-submenu-title">
+                      <ul class="multi-column-dropdown">
+                        <li id="technology-submenu-title" class="title"><strong>Technology</strong></li>
+                        <li><a href="https://www.lib.miamioh.edu/use/technology/tech-checkout/">Tech for Checkout</a></li>
+                        <li><a href="https://www.lib.miamioh.edu/use/technology/software/">Available Software</a></li>
+                        <li><a href="https://www.lib.miamioh.edu/use/technology/printing/">Printing and WiFi</a></li>
+                        <li><a href="https://www.lib.miamioh.edu/use/technology/3d-printing-services/">3D Printing</a></li>
+                        <li><a href="https://www.lib.miamioh.edu/use/technology/av-production/">Audio-Video Production</a></li>
+                        <li><a href="https://www.lib.miamioh.edu/use/technology/tech-data-services/">Data Services</a></li>
+                        <li><a href="https://www.lib.miamioh.edu/use/technology/virtual-reality/">Virtual Reality</a></li>
+                      </ul>
+                    </li>
+
+
+
+                    <li class="col-md-3 col-sm-4" role="menu" aria-labelledby="services-for-submenu-title">
+                      <ul class="multi-column-dropdown">
+                        <li id="services-for-submenu-title" class="title"><strong>Services for...</strong></li>
+                        <li><a href="https://www.lib.miamioh.edu/use/services/faculty/">Faculty</a></li>
+                        <li><a href="https://www.lib.miamioh.edu/use/services/graduateStudents/">Graduate Students</a></li>
+                        <li><a href="https://www.lib.miamioh.edu/use/services/newStudents/">New Students</a></li>
+                      </ul>
+                    </li>
+                    </div>
+                  </ul>
+        </li>
+
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" id="about-menu" href="#">About <span class="caret"></span></a>
+                  <ul id="about-dropdown" class="dropdown-menu" aria-labeledby="about-menu" role="menu">
+                    <div class="container">
+                    <li class="col-lg-4 col-sm-6" role="menu" aria-labelledby="hours-submenu-title">
+                      <ul class="multi-column-dropdown">
+                        <li id="hours-submenu-title" class="title"><strong>Locations &amp; Hours</strong></li>
+                        <li><a href="https://www.lib.miamioh.edu/about/locations/hours/">Library Hours</a></li>
+                        <li><a href="https://www.lib.miamioh.edu/about/locations/king-library/">King Library</a></li>
+                        <li><a href="https://www.lib.miamioh.edu/about/locations/art-arch/">Wertz Art & Architecture Library</a></li>
+                        <li><a href="https://www.lib.miamioh.edu/about/locations/music-library/">Amos Music Library</a></li>
+                        <li><a href="https://www.lib.miamioh.edu/about/locations/special-collections-archives/">Special Collections and University Archives</a></li>
+                        <li><a href="https://www.lib.miamioh.edu/about/locations/regional/">Regional Libraries</a></li>
+                        <li style="border-top:1px solid #999; padding-top:0.5em;margin-top:0.5em; width:90%;"><a href="https://develop.lib.miamioh.edu/2020/07/01/BEST-library-close.html">B.E.S.T. Library Closure</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="col-lg-4 col-sm-6" role="menu" aria-labelledby="staff-submenu-title">
+                      <ul class="multi-column-dropdown">
+                        <li id="organization-submenu-title" class="title"><strong>Our Organization</strong></li>
+                        <li><a href="https://www.lib.miamioh.edu/about/organization/contact-us/">Contact Us</a></li>
+                        <li><a href="https://www.lib.miamioh.edu/about/organization/staff/">Staff Directory</a></li>
+                        <li><a href="https://www.lib.miamioh.edu/about/organization/liaisons/">Subject Librarians</a></li>
+                        <li><a href="https://www.lib.miamioh.edu/about/organization/deans-office/">Welcome from the Dean</a></li>
+                        <li><a href="https://www.lib.miamioh.edu/about/organization/employment/">Employment</a></li>
+                        <li><a href="https://www.lib.miamioh.edu/about/organization/policies/">Policies</a></li>
+                        <li><a href="https://www.lib.miamioh.edu/about/organization/faqs/">FAQs</a></li>
+                      </ul>
+                    </li>
+
+                    <li class="col-lg-4 col-sm-5" role="menu" aria-labelledby="news-submenu-title">
+                      <ul class="multi-column-dropdown">
+                        <li id="news-submenu-title" class="title"><strong>News and Events</strong></li>
+                        <li><a href="https://www.lib.miamioh.edu/about/news-events/news/">Library News</a></li>
+                        <li><a href="https://www.lib.miamioh.edu/about/news-events/events-exhibits/">Events and Exhibits</a></li>
+                        <li><a href="https://www.lib.miamioh.edu/about/news-events/social/">Social Media</a></li>
+                        <li><a href="https://www.lib.miamioh.edu/about/news-events/support/">Support the Libraries</a></li>
+                        <li style="border-top:1px solid #999; padding-top:0.5em;margin-top:0.5em;width:90%;"><a href="https://develop.lib.miamioh.edu/about/news-events/coronavirus/">COVID-19 (novel coronavirus) updates and resources</a></li>
+                        
+                      </ul>
+                    </li>
+                    </div>
+                  </ul>
+          </li>
+  </ul>
+  </div>
+  </div>
+  </nav> 
