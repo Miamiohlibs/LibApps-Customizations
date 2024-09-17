@@ -18,7 +18,10 @@ $(document).ready(function () {
   let urlsShowSort = [
     'equipment/item/105059', // Final Cut
     'equipment/item/115969', // Logic Pro
+    'equipment/item/170804', // Procreate
     'equipment/item/61121', // Adobe Creative Cloud
+    'equipment/item/82764', // Adobe for Fac/Staff
+    'equipment/item/172159', // Acrobat for Fac/Staff
     'equipment/item/141114', // test page
     '?lid=8370', // all Library Software Checkout pages
     'lid=16728', // test page
@@ -36,7 +39,7 @@ $(document).ready(function () {
 
   /* Section 2: add sort button when time grid appears */
   function listenForTimeGrid() {
-    if ($('.fc-timeline-slots').length > 0) {
+    if ($('.fc-timeline-slots').length > 0 && showSort) {
       addSortButton();
       //   console.log('time grid found');
     } else {
@@ -62,7 +65,7 @@ $(document).ready(function () {
   /* Section 4: Sort by availability */
   function sortByAvailability() {
     addAvailCounts();
-    sortByAvial();
+    sortByAvail();
   }
 
   function addAvailCounts() {
@@ -78,7 +81,7 @@ $(document).ready(function () {
     return $(el).find('a.s-lc-eq-avail').length;
   }
 
-  function sortByAvial() {
+  function sortByAvail() {
     let entries = $('tr.sortable');
     let tbody = $('tr.sortable:first').closest('tbody');
     $('tr.sortable').remove();
