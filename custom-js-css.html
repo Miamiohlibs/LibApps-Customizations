@@ -151,7 +151,7 @@ Updated by: Ken Irwin
             url: 'https://www.lib.miamioh.edu/crosswalk/jekyll-libguides.json',
             dataType: 'json',
             async: false,
-            error: function () { errorState = true; console.error('Error fetching crosswalk data')},
+            error: function () { errorState = true; console.error('Error fetching crosswalk data -- possibly a CORS error')},
             success: function (data) {
             crosswalk = data;
             },
