@@ -38,17 +38,16 @@ Updated by: Ken Irwin
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Miamiohlibs/LibApps-Customizations@main/LibGuides/JS/collapse-bs3.js"></script>	
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Miamiohlibs/LibApps-Customizations@main/LibGuides/JS/transition-bs3.js"></script>	
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Miamiohlibs/LibApps-Customizations@main/LibGuides/JS/tab.js"></script> 
-
-
-
 <script>
+
 /** ----------------------------------------------------------------
  * Table of Contents (Javascript):
  * 0.1 - AppendEmail
- * 0.1.1 - Handle main page loading bug (commented out)
  * 0.2 - Google Custom Search
  * 0.3 - Add aria-current="page" in main menu
  * 0.4 -- keyboard script for main navigation 
+ * 0.5 - Handle main page loading bug (commented out 11/14/25)
+ * 0.6 - What is this? 
  * 1.0 & Beyond -- CSS (see below for detailed CSS TOC)
  * -------------------------------------------------------------------
  */
@@ -77,22 +76,6 @@ Updated by: Ken Irwin
             $(thisProfile).find('.s-lib-profile-contact').append(emailDiv);
         }
     }
-
-
-    /*
-  * 0.1.1 - Handle main page loading bug
-  * in Nov 2025, we found that the main page wasn't always loading its content on load
-  * so this clicks the "by subject" button when the main page loads, which loads the 
-  * missing content. it's dumb and we shouldn't need it, but it seems important. 
-  * It didn't work if I put it later in the file, so it's up here.
-  */
-   
-  // $(document).ready(function() {
-  //   if(window.location.href == "https://libguides.lib.miamioh.edu/" || window.location.href == "https://libguides.lib.miamioh.edu") {
-  //    $('#s-lg-index-subject-btn button').click();
-  //   }
-  // })
-
 
    /* 
      * 0.2 - Google Custom Search
@@ -436,7 +419,26 @@ $('.list-unstyled li hr').each(function() {
 });
  
 
+/*
+  * 0.5 - Handle main page loading bug (turned off)
+  * in Nov 2025, we found that the main page wasn't always loading its content on load
+  * so this clicks the "by subject" button when the main page loads, which loads the 
+  * missing content. it's dumb and we shouldn't need it, but it seems important. 
+  * This may be rendered unneeded by other recent changes to error handling 
+  * in other parts of this script. I'm leaving it in but turned off for now. -Ken
+  */
+   
+  // $(document).ready(function() {
+  //   if(window.location.href == "https://libguides.lib.miamioh.edu/" || window.location.href == "https://libguides.lib.miamioh.edu") {
+  //    $('#s-lg-index-subject-btn button').click();
+  //   }
+  // })
 
+
+/* 
+ * 0.6 - what is this? part of the searchbar handling?
+ * defunct? 
+ */ 
 
 $(function() {
   $('#s-lg-srch-content').addClass('row col-12');
