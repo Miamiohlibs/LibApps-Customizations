@@ -1,5 +1,5 @@
 <!--
-JS Last Updated: 2025-11-13
+JS Last Updated: 2025-11-14
 Updated by: Ken Irwin 
 -->
 <!-- MSClarity script for LibGuides  -->
@@ -45,7 +45,7 @@ Updated by: Ken Irwin
 /** ----------------------------------------------------------------
  * Table of Contents (Javascript):
  * 0.1 - AppendEmail
- * 0.1.1 - Handle main page loading bug
+ * 0.1.1 - Handle main page loading bug (commented out)
  * 0.2 - Google Custom Search
  * 0.3 - Add aria-current="page" in main menu
  * 0.4 -- keyboard script for main navigation 
@@ -87,11 +87,11 @@ Updated by: Ken Irwin
   * It didn't work if I put it later in the file, so it's up here.
   */
    
-  $(document).ready(function() {
-    if(window.location.href == "https://libguides.lib.miamioh.edu/" || window.location.href == "https://libguides.lib.miamioh.edu") {
-     $('#s-lg-index-subject-btn button').click();
-    }
-  })
+  // $(document).ready(function() {
+  //   if(window.location.href == "https://libguides.lib.miamioh.edu/" || window.location.href == "https://libguides.lib.miamioh.edu") {
+  //    $('#s-lg-index-subject-btn button').click();
+  //   }
+  // })
 
 
    /* 
@@ -124,20 +124,15 @@ Updated by: Ken Irwin
         }
       },1000);
  
-    // Flip search to closed upon click -- ken turned this off 11/14/2025
+    // Flip search to closed upon click
 
-    
-    // $('.site-search-icon-control').click(function(){
-    //   $('#site-search-icon').toggleClass('bi-search');
-    //   $('#site-search-icon').toggleClass('bi-x-circle');
-    //   $('.bi-x-circle ~ span').text('Close Search');
-    //   $('.bi-search ~ span').text('Site Search');
-    // });
+    $('.site-search-icon-control').click(function(){
+      $('#site-search-icon').toggleClass('bi-search');
+      $('#site-search-icon').toggleClass('bi-x-circle');
+      $('.bi-x-circle ~ span').text('Close Search');
+      $('.bi-search ~ span').text('Site Search');
+    });
    });
-
-$(function() {
-  console.log('pre-crosswalk');
-})
 
     /* 
      * 0.3 - Add aria-current="page"
@@ -180,10 +175,6 @@ $(function() {
     }
     });
         
-$(function(){
-  console.log('post cross-walk')
-})
-
    /* 
      * 0.4 - menu keyboard navigation
      *  --------------------------------------------------------------------------------------------
@@ -334,7 +325,7 @@ $('.list-unstyled li hr').each(function() {
     })
   })
 
-  /* BEGIN FUNCTIONS */
+  /* BEGIN KEYBOARD NAV FUNCTIONS */
     let closeMenu = function () {
       // console.log('Close menus');
       $('.dropdown-menu').removeClass('show');
@@ -440,7 +431,7 @@ $('.list-unstyled li hr').each(function() {
       return nextN;
     }
 
-  /* END FUNCTIONS */
+  /* END KEYBOARD NAV FUNCTIONS */
 
 });
  
