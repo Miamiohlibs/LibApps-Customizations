@@ -397,6 +397,9 @@ $('.list-unstyled li hr').each(function() {
 });
  
 
+$(function() {
+  console.log('pre-crosswalk');
+})
 
     /* 
      * 0.3 - Add aria-current="page"
@@ -407,17 +410,20 @@ $('.list-unstyled li hr').each(function() {
      *  --------------------------------------------------------------------------------------------
      */
 
-    $(function () {
+        $(function () {
+        try {
         var crosswalk;
+        var errorState = false;
         $.ajax({
             url: 'https://www.lib.miamioh.edu/crosswalk/jekyll-libguides.json',
             dataType: 'json',
             async: false,
+            error: function () { errorState = true; console.error('Error fetching crosswalk data')},
             success: function (data) {
             crosswalk = data;
             },
         });
-
+        if (!errorState) {
         /* find crosswalk entries that match this page url; add aria-current=page for each relevant item in nav */
         var pageUrl = window.location.href;
         var currPages = crosswalk.filter((obj) => {
@@ -430,7 +436,15 @@ $('.list-unstyled li hr').each(function() {
             .first()
             .attr('aria-current', 'page');
         });
+        }
+    } catch (e) {
+      console.log(e)
+    }
     });
+        
+$(function(){
+  console.log('post cross-walk')
+})
 
 $(function() {
   $('#s-lg-srch-content').addClass('row col-12');
