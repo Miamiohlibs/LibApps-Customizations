@@ -219,7 +219,7 @@ $('.list-unstyled li hr').each(function() {
     $(this).attr('data-menuLinkIdx',index);
     $(this).focus(function() {
       $(this).keyup(function(event) {
-        console.log('keyup on a menulink', event.keyCode);
+        // console.log('keyup on a menulink', event.keyCode);
         switch (event.keyCode) {
 
           case Keyboard.DOWN:
@@ -229,9 +229,9 @@ $('.list-unstyled li hr').each(function() {
             openMenu($(this).attr('data-menuLinkIdx'));
             break;
           case Keyboard.ENTER:
-            console.log('keyup on a menulink', event.keyCode);
+            // console.log('keyup on a menulink', event.keyCode);
             event.preventDefault();
-            console.log('this:',$(this).attr('data-menuLinkIdx'));
+            // console.log('this:',$(this).attr('data-menuLinkIdx'));
             openMenu($(this).attr('data-menuLinkIdx'));
             break;
           case Keyboard.RIGHT:
@@ -271,11 +271,11 @@ $('.list-unstyled li hr').each(function() {
     var thisIndex = index;
     var focusedItem = $(this);
     $(this).keyup(function(event) {
-      console.log('keyup on menuItem', event.keyCode, 'on:');
-      console.log(thisIndex);
+      // console.log('keyup on menuItem', event.keyCode, 'on:');
+      // console.log('keyindex:',thisIndex);
       var thisId = $(this).attr('id');
       if (event.keyCode != Keyboard.TAB) {
-        console.log('preventing default on:',event.keyCode);
+        // console.log('preventing default on:',event.keyCode);
         event.preventDefault();
       }
       if (event.keyCode == Keyboard.ESCAPE) {
@@ -383,11 +383,11 @@ $('.list-unstyled li hr').each(function() {
       let menu = $('a[data-menuLinkIdx='+menuLinkIdx+']').parent();
       // if closed, then open; if open, then enter:
       if (menu.children('.nav-title').attr('aria-expanded') == 'false') {
-        console.log('closed, so opening');
+        // console.log('closed, so opening');
         menu.children('.dropdown-menu').addClass('show');
         menu.children('.nav-title').attr('aria-expanded',true);
       } else {
-        console.log('open, so entering',menuLinkIdx);
+        // console.log('open, so entering',menuLinkIdx);
         menu.find('.list-unstyled li').not('.title').children('a:first').focus();
       }
     }
