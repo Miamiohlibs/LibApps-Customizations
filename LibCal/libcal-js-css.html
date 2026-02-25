@@ -4,6 +4,7 @@ Table of Contents (JS)
 0.2 - Keyboard Navigation Menu
 0.3 - McVey Data Science Room Reservations: Add class to reservation page
 0.4 - Microsoft Clarity logger
+0.5 - LibCal Form Validation
 -->
 
 <script>
@@ -396,6 +397,32 @@ window.addEventListener('DOMContentLoaded', (event) => {
     })(window, document, "clarity", "script", "o4ncwrhzk9");
 </script>
 
+<script type="text/javascript">
+/** 
+ * 0.5 - LibCal form field validation
+ *       Based on question/field IDs, require that some fields be type="email" instead of "text".
+ *       Also checking for valid numeric answers for what should be number fields.
+ *       This will add client-side validation.
+ */
+
+ $(document).ready(function() {
+    /*  These arrays list LibCal question number IDs from the Booking Forms Question Bank*/ 
+    const miamiEmailFields = [
+        "28988", // Enter full Miami email of 2nd participant (student@miamioh.edu)
+        "28989", // Enter full Miami email for 3rd participant (student@miamioh.edu):
+    ];
+    const numericFields = [
+        "4793", // Number of People Using Space
+    ]
+    miamiEmailFields.map(id => {
+        $(`#q${id}`).attr("type","email").attr("pattern",".+@miamioh\.edu").attr("title","miamioh.edu email required");
+    })
+    numericFields.map(id => {
+        $(`#q${id}`).attr("type","number");
+    })
+ })
+
+</script>
 
 
 
