@@ -1,0 +1,1218 @@
+<!--
+Table of Contents (JS)
+0.1 - Software Checkout Sorting
+0.2 - Keyboard Navigation Menu
+0.3 - McVey Data Science Room Reservations: Add class to reservation page
+0.4 - Microsoft Clarity logger
+-->
+
+<script>
+/**
+ *  0.1 - Software Checkout Sorting (JS)
+ *
+ * This script adds a button to certain LibCal equipment pages.
+ * The button will sort the display of availability so that items
+ * with more availability float to the top.
+ * Note: this does NOT sort the left-hand column (items) so this method
+ * is only suitable when all the items are the same (e.g. a pool of software
+ * licenses). It will not work if the items are unique (such as study rooms)
+ * or if the items are subdivided into groups (also like study rooms in some
+ * cases.
+ *
+ * Currently, this is only used for Software Checkout.
+ */
+
+$(document).ready(function () {
+  /* Section 0: Configuration */
+  // urls for pages on which to show the sort button
+
+  let urlsShowSort = [
+    'equipment/item/105059', // Final Cut
+    'equipment/item/115969', // Logic Pro
+    'equipment/item/170804', // Procreate
+    'equipment/item/61121', // Adobe Creative Cloud
+    'equipment/item/82764', // Adobe for Fac/Staff
+    'equipment/item/172159', // Acrobat for Fac/Staff
+    'equipment/item/141114', // test page
+    '?lid=8370', // all Library Software Checkout pages
+    'lid=16728', // test page
+  ];
+
+  /* Section 1: set showSort based on url matching */
+
+  showSort = false;
+  urlsShowSort.forEach(function (groupId) {
+    if (window.location.href.indexOf(groupId) > -1) {
+      showSort = true;
+      console.log(window.location.href + ' should include ' + groupId); 
+    }
+  });
+     console.log('Show Sort: ' + showSort);
+
+  /* Section 2: add sort button when time grid appears */
+  function listenForTimeGrid() {
+    if ($('.fc-timeline-slots').length > 0 && showSort) {
+      addSortButton();
+      //   console.log('time grid found');
+    } else {
+      setTimeout(listenForTimeGrid, 500);
+    }
+  }
+  listenForTimeGrid();
+
+  /* Section 3: Add sort button */
+  function addSortButton() {
+    let sortIcon =
+      '<svg role="img" aria-labelledby="svg-sort-desc" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sort-up" viewBox="0 0 16 16"><path d="M3.5 12.5a.5.5 0 0 1-1 0V3.707L1.354 4.854a.5.5 0 1 1-.708-.708l2-1.999.007-.007a.498.498 0 0 1 .7.006l2 2a.5.5 0 1 1-.707.708L3.5 3.707V12.5zm3.5-9a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zM7.5 6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zm0 3a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z"/></svg>';
+    $('#time_grid_cont').prepend(
+      '<button class="btn btn-primary" id="sort-by-avail">' +
+        sortIcon +
+        '<desc id="svg-sort-desc"> Sort by availability</desc></button>'
+    );
+    $('#sort-by-avail').bind('click', function () {
+      sortByAvailability();
+    });
+  }
+
+  /* Section 4: Sort by availability */
+  function sortByAvailability() {
+    addAvailCounts();
+    sortByAvail();
+  }
+
+  function addAvailCounts() {
+    $('div.fc-timeline-lane-frame').each(function (index, el) {
+      $(this)
+        .closest('tr')
+        .attr('data-avail-count', getAvailCount(el))
+        .addClass('sortable');
+    });
+  }
+
+  function getAvailCount(el) {
+    return $(el).find('a.s-lc-eq-avail').length;
+  }
+
+  function sortByAvail() {
+    let entries = $('tr.sortable');
+    let tbody = $('tr.sortable:first').closest('tbody');
+    $('tr.sortable').remove();
+    entries
+      .sort(function (a, b) {
+        return $(b).attr('data-avail-count') - $(a).attr('data-avail-count');
+      })
+      .appendTo(tbody);
+  }
+});
+
+</script>
+
+<script>
+  /* 
+     * 0.2 - menu keyboard navigation
+     *  -----------------------------------------------------------
+     */
+
+$(document).ready(function() {
+
+     /*
+  IMPORTANT NOTE:
+  This first line unbinds ALL the regular keyboard interactions with the menu.
+  I don't know why it only unbinds menu effects -- why not the whole page?
+  It seems to work, but it means that some desired behavior is cancelled (e.g.
+  ESC to close the menu, ENTER to follow links). We had to build that functionality back in explicitly.
+  We did this to unbind the undesired UP and DOWN key behaviors (closing the menu instead of navigating it). If we can find a subtler tool for the unbinding,
+  we  should do it.
+  */
+  $(document).unbind('keyup');
+
+  Keyboard = {
+      BACKSPACE: 8,
+      COMMA: 188,
+      DELETE: 46,
+      DOWN: 40,
+      END: 35,
+      ENTER: 13,
+      ESCAPE: 27,
+      HOME: 36,
+      LEFT: 37,
+      PAGE_DOWN: 34,
+      PAGE_UP: 33,
+      PERIOD: 190,
+      RIGHT: 39,
+      SPACE: 32,
+      TAB: 9,
+      UP: 38
+    }
+
+  // remove <hr> tags in nav submenus from being selectable nav elements
+$('.multi-column-dropdown li hr').each(function() {
+    $(this).attr('role','separator');
+    $(this).parent().attr('tabindex','-1').attr('role','presentation').attr('aria-hidden','true');
+  });
+
+  var menus = $('.dropdown-menu');
+  var menuLinks = $('a.nav-title');
+  var submenus = $('.dropdown-menu .multi-column-dropdown');
+  var menuItems = $('.dropdown-menu .multi-column-dropdown > li:not(".title"):not(".no-tab-nav"):not("[tabindex=-1]")');
+  // var menuEnterKeys = [Keyboard.ENTER, Keyboard.DOWN];
+  // var press = jQuery.Event("keypress");
+
+  menus.each(function(index) {
+    $(this).attr('data-menuIdx',index);
+    $(this).closest('nav-item').attr('data-menuIdx',index);
+  });
+
+  menuLinks.each(function(index) {
+    $(this).attr('data-menuLinkIdx',index);
+    $(this).focus(function() {
+      $(this).keyup(function(event) {
+        console.log('keyup on a menulink', event.keyCode);
+        switch (event.keyCode) {
+
+          case Keyboard.DOWN:
+            event.preventDefault();
+            // console.log('keyup on a menulink', event.keyCode)
+            // console.log('this:',$(this).attr('data-menuLinkIdx'));
+            openMenu($(this).attr('data-menuLinkIdx'));
+            break;
+          case Keyboard.ENTER:
+            console.log('keyup on a menulink', event.keyCode);
+            event.preventDefault();
+            console.log('this:',$(this).attr('data-menuLinkIdx'));
+            openMenu($(this).attr('data-menuLinkIdx'));
+            break;
+          case Keyboard.RIGHT:
+            event.preventDefault();
+            // console.log('Pressed Right Arrow');
+            nextMenuLink($(this).attr('data-menuLinkIdx'));
+            break;
+          case Keyboard.LEFT:
+            event.preventDefault();
+            // console.log('Pressed Left Arrow');
+            nextMenuLink($(this).attr('data-menuLinkIdx'),'minus');
+            break;
+          default:
+            // console.log('unregistered keystroke in top menu', event.keyCode);
+        }
+      })
+    })
+  })
+
+  submenus.each(function(index) {
+    $(this).attr('data-submenuIdx',index);
+    var thisMenuIdx = $(this).closest('.dropdown-menu').attr('data-menuIdx');
+    $(this).attr('data-menuIdx',thisMenuIdx);
+    $(this).attr('id','nav-' + thisMenuIdx + '-' + index);
+
+  });
+
+  menuItems.each(function(index) {
+  // $('.dropdown-menu .multi-column-dropdown li').each(function () {
+    thisSubMenu = $(this).closest('.multi-column-dropdown').attr('data-submenuIdx');
+    thisMenu = $(this).closest('.multi-column-dropdown').attr('data-menuIdx');
+    $(this).attr('data-colIdx',index);
+    $(this).attr('data-submenuIdx',thisSubMenu);
+    $(this).attr('data-menuIdx',thisMenu);
+    $(this).attr('id','nav-'+thisMenu+'-'+thisSubMenu+'-'+index);
+    // console.log(this);
+    var thisIndex = index;
+    var focusedItem = $(this);
+    $(this).keyup(function(event) {
+      console.log('keyup on menuItem', event.keyCode, 'on:');
+      console.log(thisIndex);
+      var thisId = $(this).attr('id');
+      if (event.keyCode != Keyboard.TAB) {
+        console.log('preventing default on:',event.keyCode);
+        event.preventDefault();
+      }
+      if (event.keyCode == Keyboard.ESCAPE) {
+        event.stopPropagation();
+      }
+      // console.log('hit the ',event.keyCode);
+      switch (event.keyCode) {
+
+        case Keyboard.RIGHT:
+          nextSubMenu(thisId);
+          break;
+        case Keyboard.LEFT:
+          nextSubMenu(thisId,'minus');
+          break;
+        case Keyboard.DOWN:
+          nextItem(thisId);
+          break;
+        case Keyboard.UP:
+          nextItem(thisId,'minus');
+          break;
+        case Keyboard.ENTER:
+          followLink(thisId);
+          break;
+        case Keyboard.ESCAPE:
+          nextMenu(thisId,'same')
+          break;
+        default:
+          // console.log('hit the ',event.keyCode)
+      }
+    })
+  })
+
+  /* BEGIN FUNCTIONS */
+    let closeMenu = function () {
+      // console.log('Close menus');
+      $('.dropdown-menu').removeClass('show');
+      $('.nav-title').attr('aria-expanded',false);
+    }
+
+    let followLink = function (thisId) {
+      let link = $('#'+thisId+' a').attr('href');
+      console.log('Go to:',link);
+      window.location.href = link;
+    }
+
+    let nextMenuLink = function(start,plusOrMinus="plus") {
+      // console.log('nextMenuLink from', start);
+      let nextLink = next(start,plusOrMinus);
+      if (nextLink >= 0 && nextLink<menuLinks.length) {
+        // console.log('go to menuLink',nextLink);
+        $('.nav-title[data-menuLinkIdx="'+nextLink+'"]').focus();
+        // console.log('went to menuLink',nextLink);
+      }
+    }
+
+    let nextItem = function(start,plusOrMinus="plus") {
+      let [menu,submenu,item] = parseId(start);
+      // menu
+      let firstSubmenuItemId = $('a[data-menuLinkIdx='+menu+']').parent()
+        .find('.multi-column-dropdown li').not('.title').attr('id');
+      let [fsm,fsc,firstSubmenuItemIdx] = parseId(firstSubmenuItemId);
+      //   console.log('firstSubmenuItemIdx',menu,firstSubmenuItemIdx);
+      // console.log('go to next item from ',menu,submenu,item);
+      let nextItem = next(item,plusOrMinus);
+      if (nextItem < firstSubmenuItemIdx) {
+        // console.log('close Menu and select it', menu);
+        closeMenu();
+        // console.log('closed menus');
+        $('a[data-menuLinkIdx="'+menu+'"]').focus();
+        // console.log('tried to focus on menuLink',menu);
+      } else
+      if (nextItem < menuItems.length && nextItem >= 0) {
+        // console.log('go to item', nextItem);
+        $('li[data-colIdx="'+nextItem+'"] a').focus();
+      }
+    }
+
+    let nextSubMenu = function(start,plusOrMinus="plus") {
+      // console.log('go to next ('+plusOrMinus+') submenu from ',menu,submenu,item)
+      let [menu,submenu,item] = parseId(start);
+      let nextSub = next(submenu,plusOrMinus);
+      // console.log('go to submenu', nextSub);
+      nextEl = $('ul.multi-column-dropdown[data-menuIdx="'+menu+'"][data-submenuIdx="'+nextSub+'"] li:nth-child(2) a');
+      nextEl.focus();
+      if (! nextEl.length) { nextMenu(start,plusOrMinus); }
+    }
+
+    let nextMenu = function(start,plusOrMinus = "plus") {
+      let [menu,submenu,item] = parseId(start);
+      // console.log('begin go to next Menu from',menu,plusOrMinus);
+      let nextN = next(menu, plusOrMinus);
+      if (nextN == menus.length) {
+        nextN--;
+      } else if (nextN < 0) {
+        nextN = 0;
+      }
+      // console.log('select menu',nextN)
+      closeMenu();
+      let nextEl = $('.dropdown-menu[data-menuIdx='+nextN+']').parent().children('a:first');
+      // console.log('Next Menu',nextEl.text());
+      nextEl.focus();
+    }
+
+    let openMenu = function(menuLinkIdx) {
+      let menu = $('a[data-menuLinkIdx='+menuLinkIdx+']').parent();
+      // if closed, then open; if open, then enter:
+      if (menu.children('.nav-title').attr('aria-expanded') == 'false') {
+        console.log('closed, so opening');
+        menu.children('.dropdown-menu').addClass('show');
+        menu.children('.nav-title').attr('aria-expanded',true);
+      } else {
+        console.log('open, so entering',menuLinkIdx);
+        menu.find('.multi-column-dropdown li').not('.title').children('a:first').focus();
+      }
+    }
+
+    let parseId = function (start) {
+      let [str,menu,submenu,item] = start.split('-');
+      menu = parseInt(menu);
+      submenu = parseInt(submenu);
+      item = parseInt(item);
+      return [menu,submenu,item];
+    }
+
+    let next = function(n, plusOrMinus) {
+      let nextN = n;
+      if (plusOrMinus == "same") {
+        return n;
+      } else if (plusOrMinus == "plus") {
+         nextN++;
+      }
+      else {
+         nextN--;
+      }
+      // console.log(n,plusOrMinus,1,'=',nextN)
+      return nextN;
+    }
+
+  /* END KEYBOARD FUNCTIONS */
+
+});
+ 
+</script>
+
+<script type="text/javascript">
+/**
+ * 0.3 - McVey Data Science Room Reservations: Add CSS class to reservation page (based on url)
+ * Hides the "Make another reservation button" after submitting a request
+ */ 
+window.addEventListener('DOMContentLoaded', (event) => {
+    const targetSubstring = "data-science-study-rooms";
+    if (window.location.href.includes(targetSubstring)) {
+        document.body.classList.add("data-sciences-reservation");
+        console.log("Class .data-sciences-reservation applied to body.");
+    } else {
+        console.log("URL match not found. Current URL is: " + window.location.href);
+    }
+});
+</script>
+
+<script type="text/javascript">
+/**
+ * 0.4 - Microsoft Clarity logger
+ * 
+ */ 
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "o4ncwrhzk9");
+</script>
+
+
+
+
+
+
+<link rel="shortcut icon" href="https://www.lib.miamioh.edu/sites/default/files/favicon_0.ico" />
+
+<link href="https://fonts.googleapis.com/css?family=Cabin+Condensed&display=swap" rel="stylesheet">  
+<link href="https://fonts.googleapis.com/css?family=Raleway:200,300&display=swap" rel="stylesheet">
+
+<style>
+
+/**
+ * Table of Contents:
+ * 1.0 - Basic
+ * 2.0 - Header/Navigation Bar
+ * 2.1 - Header/Navigation @media queries
+ * 2.2 - Google website search
+ * 3.0 - LibCal
+ * 4.0 - Footer
+ * 6.0 - @media queries
+ * 7.0 - LibChat
+ * 8.0 -- @Fonts
+ * ----------------------------------------------------------------------------
+ */
+/**
+ * 1.0 Basic
+ * ----------------------------------------------------------------------------
+ */
+/* --- Accessibility focus ---- */
+:focus {
+  outline: auto 2px Highlight !important;
+  outline: auto 5px -webkit-focus-ring-color !important;
+}
+
+/*-- McVey Data Sciences, prevent repeat bookings --*/
+
+body.data-sciences-reservation #s-lc-eq-success-buttons a.btn.btn-primary {
+    display: none;
+}
+
+
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  background-color: #fff;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+p, li, well {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+a {
+  font-weight: bold;
+  color: #007B89;
+}
+
+:focus {
+  outline: auto 2px Highlight !important;
+  outline: auto 5px -webkit-focus-ring-color !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cabin Condensed', sans-serif !important;
+}
+
+h1#s-lg-guide-name,
+h1#s-lib-public-header-title {
+  display: block;
+  margin: 0em 0 0.25em 0em;
+  font: normal 3.5em 'Cabin Condensed', sans-serif;
+  padding: 0px 0px;
+}
+
+a.label-info {
+  background-color: #008296;
+}
+
+div.s-lib-box{
+  box-shadow: none;
+}
+
+#booking  select#capacity { display: none; }
+
+
+/**
+ * 2.0 Libraries Header and Navigation Bar
+ * ----------------------------------------------------------------------------
+ */
+
+
+div.datepicker.datepicker {z-index: 10000!important;}
+
+#s-lc-public-bc {display:none;}
+
+#libguides-navbar {
+  width: 100%;
+  background-color:#c3142d!important;
+  border-top: 5px solid #424242;
+  padding: 0 0 0.15em 0;
+  margin-top: 0;
+}
+
+.navbar{
+  border-radius: 0px;
+  border: 0px;
+}
+
+
+#site-logo img {
+width:300px!important; 
+    height: auto!important; 
+    margin: 0.5em 0 0 0em;
+}
+
+
+#libguides-navbar ul.nav.navbar-nav {
+  padding: 0em 0 0 0em !important;
+  margin: 1.5em auto 0rem 10rem !important;
+}
+
+#libguides-navbar ul.navbar-nav li.dropdown {
+  position: static!important;
+}
+
+#libguides-navbar ul.dropdown-menu {
+  padding: 0em 0em;
+  margin: 0;
+  width: 100%;
+}
+
+#libguides-navbar ul.dropdown-menu .container{
+  padding: 0.5em 0em 2em 12em;
+}
+
+
+#libguides-navbar ul.navbar-nav li.dropdown a.dropdown-toggle {
+  font-family: "Adelle Regular", Georgia, "Times New Roman", serif;
+  font-size: 1.7em;
+  font-weight: 100;
+  color: #FFFEFC;
+  display: block;
+  padding-right: 1.2em;
+}
+
+#libguides-navbar ul.navbar-nav li.dropdown.open a.dropdown-toggle,
+#libguides-navbar ul.navbar-nav li.dropdown a.dropdown-toggle:hover {
+  background-color: #ffffff00;
+  text-decoration: underline;
+}
+
+ul.dropdown-menu {
+  background-color: #ffffff !important;
+  padding: 0 0 1.5em 0;
+  margin: 0.25em 1em 1em 1em;
+}
+
+ul.multi-column-dropdown {
+  padding: 0em 0 0 0.5em;
+}
+
+.multi-column-dropdown li {
+  list-style-type: none !important;
+}
+
+.multi-column-dropdown li.title {
+  list-style-type: none;
+  margin: 1.5em 0 0.25em 0em !important;
+  color: #333;
+  font-size: 1.2em;
+}
+
+.multi-column-dropdown li a {
+  display: block;
+  line-height: 1.55;
+  white-space: normal;
+  margin: 0 0 0.25em -0.5em;
+  padding: 0em 0.35em 0em 0.5em;
+  color: black;
+  font-weight: normal;
+  font-size: 1.1em;
+  margin-bottom: 0.75em;
+}
+
+.multi-column-dropdown li a:hover {
+  display: block;
+  background-color: #C3142D;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* --- superNav ---- */
+#superNav {
+  position: relative;
+  float:right;
+  margin: 0 0 0 0 !important;
+}
+
+#superNav li {
+  float: left;
+  margin: 0.75em 1.5em 0 0em;
+  list-style-type: none;
+}
+
+#superNav li a {
+  font-weight: normal;
+}
+
+#superNav a:hover {
+  text-decoration: underline;
+}
+
+#research-dropdown {
+  background-image: url("https://www.lib.miamioh.edu/images/CornerImages/AlumniHallCornerImg.png");
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  background-size: 50%;
+}
+
+#using-dropdown {
+  background-image: url("https://www.lib.miamioh.edu/images/CornerImages/KingLibraryCornerImg.png");
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  background-size: 50%;
+}
+
+#about-dropdown {
+  background-image: url("https://www.lib.miamioh.edu/images/CornerImages/LibraryCornerImg.png");
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  background-size: 50%;
+}
+
+
+/**
+ * 2.1 header/menus media queries
+ * ----------------------------------------------------------------------------*/
+
+/* 2.1.1 ------------------------------------ */
+@media screen and (max-width:1199px) {
+  #libguides-navbar {
+    height: 8.5em !important;
+  }
+
+  #libguides-navbar ul.nav.navbar-nav {
+    margin: -3em 0em 0 20em !important;
+  }
+
+  #libguides-navbar ul.navbar-nav li.dropdown a.dropdown-toggle {
+    font-size: 1.55em;
+    padding-right: 1em;
+  }
+  
+  #superNav {
+  margin: 0 0 0 14em !important;
+}
+  
+  #libguides-navbar ul.dropdown-menu .container{
+  margin: 0 auto 0 auto;
+  padding: 0em 0em 2em 15em;
+  width:1000px;
+}
+  
+  
+}
+
+/* 2.1.2 ---------------------------------------- */
+@media screen and (max-width:991px) {
+    
+  
+  #libguides-navbar ul.navbar-nav li.dropdown a.dropdown-toggle {
+    font-size: 1.35em !important;
+    padding-right: 0.75em !important;
+  }
+
+  #libguides-navbar ul.nav.navbar-nav {
+    padding: 0em 0 0 0em !important;
+    width: 100%;
+    margin: -3em 2rem 4.5rem 17rem !important;
+  }
+    
+
+    #superNav {
+  margin: 0 0 0 12.5rem !important;
+}
+  
+  li.giveToLibrary, li.miami {
+    display: none;
+  }
+
+  #libguides-navbar ul.navbar-nav li.dropdown a.dropdown-toggle {
+    font-size: 1.5em;
+    padding-right: 1em;
+  }
+
+ul.dropdown-menu {
+  background-color: #ffffff !important;
+  padding: 0 0 1.5em 0;
+  margin: 0.25em 0em 1em 0em;
+  width: 100%;
+}
+  
+#libguides-navbar ul.dropdown-menu .container{
+  margin: 0 auto 0 auto;
+  padding: 0em 0em 2em 0em;
+  width:700px;
+}
+  
+ul.multi-column-dropdown {
+  padding: 1em 0 0 0em;
+  margin: 0 0 0 0em;
+}
+  
+#research-dropdown,
+#using-dropdown,
+#about-dropdown {
+    background-image: none;
+  }
+  
+  
+}
+
+/* 2.1.3 -------------------------------------------- */
+@media screen and (max-width: 768px) {
+  
+  
+  
+    #libguides-navbar {
+    height: 90px !important;
+      border: none;
+  }
+  
+.navbar-brand {
+    width: 160px;
+    height: 120px;
+  }
+
+.navbar-brand img {
+    width: 120px;
+    height: auto;
+  }
+  
+#libguides-navbar button.navbar-toggle {
+  cursor: pointer;
+  margin: 3em 2em 0em 0em;
+  border: 1px solid #fff;
+  background: transparent;
+}
+  
+#libguides-navbar button.navbar-toggle.collapsed {
+    border: 1px solid #333 !important;
+  background-color: #fff;
+  }
+
+#libguides-navbar button.navbar-toggle.collapsed span.icon-bar {
+    border: 1px solid #333 !important;
+    color: #333 !important;
+  }  
+  
+  #navbar-collapse-libguides {
+    position: relative;
+    z-index: 100;
+    background: repeating-linear-gradient(-30deg, #C03C47, #C03C47 2px, #B61F2E 1px, #B61F2E 6px);
+    width: 105%!important;
+    padding:0em 2em 1em 0.25em;
+    margin: 0.75em 0 0em -1.25em;}
+  
+  
+#libguides-navbar ul.nav.navbar-nav {
+  margin: 3em auto 0em 0.5em!important;
+  width: 97%;
+}
+  
+   ul.dropdown-menu {
+    background-color: #ffffffcc !important;
+    border-radius: 10px !important;
+    padding: 0 10em 0em 0!important;
+    margin: 0.5em 0em 1em 1em !important;
+  }
+
+  ul.multi-column-dropdown {
+    margin: 0.75em 0em 0em 0em!important;
+   padding: 0 0 1em 1.5em;
+    border-bottom: 1px solid #aaa;
+      width: 85%!important;
+
+  }
+  
+.multi-column-dropdown li.title {
+  margin: 0 0em 0.25em 0em!important;
+}
+
+
+  
+  #superNav, #superNav li.miamioh, span.hide-library {display: none;}
+
+  #research-dropdown, #using-dropdown, #about-dropdown {
+  background-image: none;
+}
+
+  
+  h1#s-lg-guide-name,
+  h1#s-lib-public-header-title {
+    margin: 0em 0 0.25em 0.5em;
+    font-size: 3em;
+  }
+
+  #s-lg-box-18909832-container {
+    display: none;
+  }  
+  
+}
+
+/**
+ * 2.2 Google website search
+ * ----------------------------------------------------------------------------*/
+/* Google Search input box */
+td.gsc-input,
+td.gsc-search-button {
+  border: 0px !important;
+  padding: 0 !important;
+}
+
+.gsc-control-cse {
+  margin: 0rem 0 0rem 0;
+}
+
+.gsib_a {
+  padding: 2px 5px !important;
+}
+
+.gsc-adBlock, #adBlock {
+  display: none !important;
+}
+
+/* to kill ads */
+form.gsc-search-box {
+  font-size: 20px !important;
+}
+
+table.gsc-input {
+  margin-bottom: 0 !important;
+}
+
+.gsc-control-cse {
+  background-color: none;
+  border: none !important;
+  background-color: rgba(255, 255, 255, 0) !important;
+  padding: 0 !important;
+}
+
+div.gsc-input-box {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+#googleSCHLsearch {
+  background-color: #0B86BA;
+  color: white;
+}
+
+#___gcse_0 {
+  margin-top: -0.35rem;
+  line-height: 1;
+  width: 20rem;
+  height: 2rem;
+}
+
+button.gsc-search-button {
+  background-color: #0B86BA;
+  height: 2.45rem;
+}
+
+.gsc-search-button-v2 {
+  font-size: 1.25rem !important;
+  padding: 4px 12px !important;
+}
+
+.gsc-modal-background-image {
+  background-color: #000000aa !important;
+}
+
+
+/*---------Oxford proactive chat box----------*/
+div#s-lg-box-18909832 {
+  margin: -20px 0 0 0;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+}
+
+div#s-lg-box-18909832 h2 {
+  display: none;
+}
+
+/*---------Oxford normal chat box----------*/
+div#s-lg-box-19192826 {
+  margin: -20px 0 0 0;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+}
+
+div#s-lg-box-19192826 h2 {
+  display: none;
+}
+
+/*---------Regionals chat box----------*/
+div#s-lg-box-19004034 {
+  margin: -20px 0 0 0;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+}
+
+div#s-lg-box-19004034 h2 {
+  display: none;
+}
+
+div.s-lib-box-content {
+  padding: 10px 20px;
+}
+
+ul#s-lg-page-prevnext.pager li.next a, ul#s-lg-page-prevnext.pager li.previous a {
+  /* background: #B61E2E;
+  color: #fff; */
+}
+
+ul#s-lg-page-prevnext.pager li.next a:hover, ul#s-lg-page-prevnext.pager li.previous a:hover {
+  background: #fff;
+  color: #B61E2E;
+  border: 1px solid #B61E2E;
+}
+
+/**
+ * 3.0 LibCal CSS
+ * ----------------------------------------------------------------------------*/
+
+#s-lc-eq-navform {
+  padding: 0;
+    margin: 0.25em 0 -0.5em 0;
+}
+
+div#s-lc-location-description h2 {
+    font-size: 2.5em!important;
+}
+
+#equip_ .fc-toolbar-chunk h2 {
+    text-align: left !important;
+    float: none !important;
+    margin: 0 0 10px 0;
+    font-size: 2.125em;
+}
+
+.s-lc-resource-description {
+    clear: both;
+    margin-top: 30px;
+    padding: 0 20px 15px 25px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.alert-info {
+background-color: #E2F1F9;
+}
+
+/**
+ * 4.0 Footer CSS
+ * ----------------------------------------------------------------------------*/
+.s-lc-public-footer {display: none;}
+
+footer {
+  font: 100 1.125em/1.5em "Raleway", sans-serif;
+  padding: 0em 0em 0em 0;
+  color: #fff;
+  margin-top:4em;
+}
+
+footer .footer-container {
+  background-color: #941728;
+  padding: 0 0 2em 0 !important;
+}
+
+footer a {
+  color: #fff !important;
+  font-weight: 300 !important;
+}
+
+footer img.footer-logo {
+  width:90%; 
+  margin: 2em 0 0 0;
+}
+
+footer li {
+  list-style-type: none;
+  font-size: 1.1em;
+  line-height: 1.7;
+}
+
+footer h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+#s-lib-footer-public {
+  width: 100%;
+  background: #fff;
+  margin-top: 1em;
+  padding: 0.5em 2em 0em 2em;
+}
+
+address {
+  margin: 1.25em 0 0 0;
+  font-size: 1.5em;
+  color: #fff;
+  font-weight: 300;
+}
+
+/**
+ * 6.0 Other @media queries
+ * ----------------------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  #s-lib-bc {
+    display: none;
+  }
+
+  h1#s-lib-public-header-title {
+    margin: 0.25em 0 0.25em 0em;
+  }
+
+  #s-lib-public-header {
+    margin: 0em 0.75em 0em 0.75em;
+  }
+
+  #s-lib-public-main {
+    margin: -0.75em 0.75em 0em 0.75em;
+  }
+
+  #s-lg-hp-nav {
+    margin: -1em 0 0 0;
+  }
+
+  #s-lg-hp-nav ul {
+    padding: 0em 0;
+    margin: 0 0 -0.5em 0;
+  }
+
+  #s-lg-hp-nav ul li {
+    margin: 0.5em 0 0.5em 0;
+  }
+
+  #s-lg-hp-nav-bottom form {
+    padding: 0;
+    margin: -0.5em 0 -1.25em 0;
+  }
+
+  div#s-lg-box-18909832 {
+    margin: -10px 0 0 0;
+  }
+
+  ul.nav-stacked {
+    margin: 0 1em 1em 1em !important;
+    padding: 0em 0;
+  }
+
+  ul.nav-stacked:before {
+    content: "Guide Content";
+    font-size: 1.25em;
+    font-weight: bold;
+    padding: 0 0 0.25em 0;
+  }
+
+  ul.nav-stacked li {
+    margin: 0em 0;
+    padding: 0;
+    border: none;
+  }
+
+  ul.nav-stacked li a {
+    padding: 0.25em 1.25em !important;
+    font-size: 1em;
+    border-radius: 0px !important;
+  }
+
+  ul.nav-stacked li a:hover {
+    border-radius: 0px !important;
+  }
+
+  ul.nav-stacked {
+    margin-bottom: 1em !important;
+  }
+
+  ul.nav-stacked li {
+    margin: 0.5em 1em;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+  }
+
+  .s-lib-box-container {
+    margin: 0em 1em;
+  }
+}
+
+/**
+ * 7.0 LibChat styles
+ * ----------------------------------------------------------------------------*/
+
+/*--- Ask Us chat button ---*/
+.lcs_slide_out {
+  margin-top: 1%;
+}
+
+.lcs_slide_out header a {
+  font-size: 1.95rem !important;
+  font-weight: 400;
+  padding: 0 1em !important;
+}
+@media only screen and (max-width: 576px) {
+  .lcs_slide_out header a {
+    font-size: 1.0rem !important;
+    padding: 0 1em !important;
+  }
+}
+
+#s-lch-header-actions button i.fa.fa-fw {
+  font-size: 24px;
+}
+
+/**
+ * 8.0 @ font-face
+ * ----------------------------------------------------------------------------*/
+@font-face {
+  font-family: 'Adelle Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: url('//libapps.s3.amazonaws.com/sites/594/include/Adelle_Reg.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Adelle Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: url('//libapps.s3.amazonaws.com/sites/594/include/Adelle_Italic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Adelle Light Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: url('//libapps.s3.amazonaws.com/sites/594/include/Adelle_LightItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Adelle Light';
+  font-style: normal;
+  font-weight: normal;
+  src: url('//libapps.s3.amazonaws.com/sites/594/include/Adelle_light.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Adelle SemiBold Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: url('//libapps.s3.amazonaws.com/sites/594/include/Adelle_SemiBoldItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Adelle SemiBold';
+  font-style: normal;
+  font-weight: normal;
+  src: url('//libapps.s3.amazonaws.com/sites/594/include/Adelle_Semibold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Adelle Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: url('//libapps.s3.amazonaws.com/sites/594/include/Adelle_Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Adelle Bold Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: url('//libapps.s3.amazonaws.com/sites/594/include/Adelle_BoldItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Adelle ExtraBold';
+  font-style: normal;
+  font-weight: normal;
+  src: url('//libapps.s3.amazonaws.com/sites/594/include/Adelle_ExtraBold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Adelle ExtraBold Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: url('//libapps.s3.amazonaws.com/sites/594/include/Adelle_ExtraBoldItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Adelle Heavy';
+  font-style: normal;
+  font-weight: normal;
+  src: url('//libapps.s3.amazonaws.com/sites/594/include/Adelle_Heavy.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Adelle Heavy Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: url('//libapps.s3.amazonaws.com/sites/594/include/Adelle_HeavyItalic.woff') format('woff');
+}
+</style>
