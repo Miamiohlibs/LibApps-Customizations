@@ -2,7 +2,52 @@
 <script src="header-map.js"></script>
 <script>
   $(document).ready(function() {
-  })
+    const submenuBuilder = (submenuData) => {
+
+    }
+    const menuBuilder = (menusData) => {
+      let content = $('<div class="container d-flex flex-row flex-wrap"></div>');
+      // menusData.foreach(submenuData => {
+      //   content.append(submenuBuilder(submenuData));
+      // })
+      return content.html();
+    }
+
+    // $('#researchMenuContainer').append(menuBuilder(ResearchMenu))
+    let response = menuBuilder(ResearchMenu);
+    console.log(response);
+  });
+  // $(document).ready(function() {
+  //   const MenuBuilder = (menu, submenuindex) => {
+  //     let content = $('<div class="col-md-3 col-sm-6" role="group" aria-labelledby="'+submenuindex+'"></div>');
+        
+  //      menu.map((col, i) => { 
+  //       let label = col[0].submenuTitle;
+  //       let ul = $('<ul class="list-unstyled" data-submenuidx="'+submenuindex+'" data-menuidx="'+i+'" id="nav-0-0">');
+  //       let colCounter = 0;
+  //       col.forEach(itemData => {
+  //         let itemEl;
+
+  //         if (itemData.hasOwnProperty('submenuTitle')) {
+  //           itemEl = '<li id="'+itemData.submenuTitle+'" class="title"><strong>'+itemData.name+'</strong></li>';           
+  //         } else {
+  //           itemEl = '<li data-colidx="0" data-submenuidx="0" data-menuidx="0" id="nav-0-0-'+colCounter+'"><a href="https://lib.miamioh.edu/research'+itemData.href+'">'+itemData.name+'</a></li>'
+  //           colCounter++;
+  //         }
+  //         ul.append(itemEl); 
+  //       }) 
+  //       content.append(ul);
+  //     })
+  //     return content;
+  //   }
+
+  //   if (ResearchMenu && Array.isArray(ResearchMenu)) {
+  //     console.log('getting research menu')
+  //     const output = MenuBuilder(ResearchMenu, 0);
+  //     console.log('Research menu', output.html())
+  //     $('#researchMenuContainer').append(output)
+  //   }
+  // })
 </script>
 <header class="site-header" role="banner">
   <div class="container collapse card card-body rounded-0" tabindex='-1' id="gSearch">
@@ -56,51 +101,8 @@
               <a class="dropdown-toggle nav-title text-white" href="#cornerImgAlumni" role="button"
                 data-display="static" data-bs-toggle="dropdown" aria-expanded="false">Research and Support<b
                   class="caret"></b> </a>
-              <div class="dropdown-menu px-10 px-lg-5" id="cornerImgAlumni">
-                <div class="container d-flex flex-row flex-wrap">
-                  <div class="col-md-3 col-sm-6" role="group" aria-labelledby="find-submenu-title">
-                                    <ul class="list-unstyled" data-submenuidx="0" data-menuidx="0" id="nav-0-0">
-                                        <li id="find-submenu-title" class="title"><strong>Find</strong></li>
-                                        <li data-colidx="0" data-submenuidx="0" data-menuidx="0" id="nav-0-0-0"><a href="https://www.lib.miamioh.edu/research/find/guides/">Research Guides</a></li>
-                                        <li data-colidx="1" data-submenuidx="0" data-menuidx="0" id="nav-0-0-1"><a href="https://www.lib.miamioh.edu/research/find/databases/">Databases A-Z</a></li>
-                                        <li data-colidx="2" data-submenuidx="0" data-menuidx="0" id="nav-0-0-2"><a href="https://www.lib.miamioh.edu/research/find/onesearch/">OneSearch</a></li>                                        
-                                        <li data-colidx="3" data-submenuidx="0" data-menuidx="0" id="nav-0-0-3"><a href="https://www.lib.miamioh.edu/research/find/articles/">Articles and More</a></li>
-                                        <li data-colidx="4" data-submenuidx="0" data-menuidx="0" id="nav-0-0-4"><a href="https://www.lib.miamioh.edu/research/find/books/">Books and More</a></li>
-                                        <li data-colidx="5" data-submenuidx="0" data-menuidx="0" id="nav-0-0-5"><a href="https://www.lib.miamioh.edu/research/find/encyclopedias/">Encyclopedias and Dictionaries</a></li>
-                                        <li data-colidx="6" data-submenuidx="0" data-menuidx="0" id="nav-0-0-6"><a href="https://www.lib.miamioh.edu/digital-collections/">Digital Collections</a></li>                                    </ul>
-                                </div>                                
-                  <div class="col-md-3 col-sm-6" role="group" aria-labelledby="research-support-submenu-title">
-                                    <ul class="list-unstyled" data-submenuidx="1" data-menuidx="0" id="nav-0-1">
-                                        <li id="research-support-submenu-title" class="title"><strong>Research Support</strong></li>                                        
-<li data-colidx="7" data-submenuidx="1" data-menuidx="0" id="nav-0-1-7"><a href="https://www.lib.miamioh.edu/research/research-support/academic-integrity/">Academic Integrity</a></li>
-                                        <li data-colidx="8" data-submenuidx="1" data-menuidx="0" id="nav-0-1-8"><a href="https://www.lib.miamioh.edu/research/research-support/citation/">Citation Resources</a></li>
-                                        <li data-colidx="9" data-submenuidx="1" data-menuidx="0" id="nav-0-1-9"><a href="https://www.lib.miamioh.edu/research/research-support/ask/">Ask a Librarian</a></li>
-                                        <li data-colidx="10" data-submenuidx="1" data-menuidx="0" id="nav-0-1-10"><a href="https://www.lib.miamioh.edu/research/research-support/copyright/">Copyright</a></li>
-                                        <li data-colidx="11" data-submenuidx="1" data-menuidx="0" id="nav-0-1-11"><a href="https://www.lib.miamioh.edu/research/research-support/workshops/">Research Workshops</a></li>
-                                        <li data-colidx="12" data-submenuidx="1" data-menuidx="0" id="nav-0-1-12"><a href="https://www.lib.miamioh.edu/research/research-support/hcw/">Howe Writing Center</a></li>
-                                    </ul>
-                                </div>                                <div class="col-md-3 col-sm-6" role="group" aria-labelledby="instruction-support-submenu-title">
-                                    <ul class="list-unstyled" data-submenuidx="2" data-menuidx="0" id="nav-0-2">
-                                        <li id="instruction-support-submenu-title" class="title"><strong>Instruction Support</strong></li>                                        
-                                         <li data-colidx="14" data-submenuidx="2" data-menuidx="0" id="nav-0-2-14"><a href="https://www.lib.miamioh.edu/research/instruction/library-instruction/">Library Instruction</a></li>
-                                        <li data-colidx="15" data-submenuidx="2" data-menuidx="0" id="nav-0-2-15"><a href="https://www.lib.miamioh.edu/research/instruction/credo-instruct/">Information Literacy Modules</a></li>
-                                        <li data-colidx="16" data-submenuidx="2" data-menuidx="0" id="nav-0-2-16"><a href="https://www.lib.miamioh.edu/research/instruction/course-reserves/">Course Reserves</a></li>
-                                        <li data-colidx="17" data-submenuidx="2" data-menuidx="0" id="nav-0-2-17"><a href="https://www.lib.miamioh.edu/research/instruction/oer/">Open Educational Resources</a></li>
-                                        <li data-colidx="18" data-submenuidx="2" data-menuidx="0" id="nav-0-2-18"><a href="https://www.lib.miamioh.edu/research/instruction/accessibility/">Accessibility Resources</a></li>
-                                        <li data-colidx="19" data-submenuidx="2" data-menuidx="0" id="nav-0-2-19"><a href="https://www.lib.miamioh.edu/research/instruction/videos/">Instructional Videos</a></li>
-                                        <li data-colidx="20" data-submenuidx="2" data-menuidx="0" id="nav-0-2-20"><a href="https://www.lib.miamioh.edu/research/instruction/lore/">Learning Object Repository</a></li>                                    </ul>
-                                </div>                                <div class="col-md-3 col-sm-6" role="group" aria-labelledby="create-submenu-title">
-                                    <ul class="list-unstyled" data-submenuidx="3" data-menuidx="0" id="nav-0-3">
-                                        <li id="create-submenu-title" class="title"><strong>Creation</strong></li>                                        
-                                        <li data-colidx="21" data-submenuidx="3" data-menuidx="0" id="nav-0-3-21"><a href="https://www.lib.miamioh.edu/research/creation/makerspace/">Makerspace</a></li>
-                                        <li data-colidx="22" data-submenuidx="3" data-menuidx="0" id="nav-0-3-22"><a href="https://www.lib.miamioh.edu/research/creation/digital-scholarship/">Digital Scholarship</a></li>
-                                        <li data-colidx="23" data-submenuidx="3" data-menuidx="0" id="nav-0-3-23"><a href="https://www.lib.miamioh.edu/research/creation/scholarly-commons/">Scholarly Commons</a></li>
-                                        <li data-colidx="24" data-submenuidx="3" data-menuidx="0" id="nav-0-3-24"><a href="https://www.lib.miamioh.edu/research/creation/data-services/">Data Services</a></li>
-                                       <li data-colidx="26" data-submenuidx="3" data-menuidx="0" id="nav-0-3-26"><a href="https://www.lib.miamioh.edu/research/creation/cre-copyright/">Copyright</a></li>                                        
-                                        <li data-colidx="27" data-submenuidx="3" data-menuidx="0" id="nav-0-3-27"><a href="https://www.lib.miamioh.edu/research/creation/cre-workshops/">Creation Workshops</a></li>                                    
-</ul>
-                                </div> 
-                </div>
+              <div class="dropdown-menu px-10 px-lg-5" id="cornerImgAlumni" id="researchMenuContainer">
+                
               </div>
             </li>
 

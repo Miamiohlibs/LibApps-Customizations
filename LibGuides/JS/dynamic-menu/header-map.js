@@ -13,7 +13,7 @@ const SuperTopMenu = [
 
 const ResearchMenu = [
   [
-    { name: 'Find' },
+    { name: 'Find', submenuTitle: 'find-submenu-title' },
     { name: 'Research Guides', href: '/find/guides/' },
     { name: 'Databases A-Z', href: '/find/databases/' },
     { name: 'OneSearch', href: '/find/onesearch/' },
@@ -27,7 +27,10 @@ const ResearchMenu = [
     },
   ],
   [
-    { name: 'Research Support' },
+    {
+      name: 'Research Support',
+      submenuTitle: 'research-support-submenu-title',
+    },
     {
       name: 'Academic Integrity',
       href: '/research-support/academic-integrity/',
@@ -39,7 +42,10 @@ const ResearchMenu = [
     { name: 'Howe Writing Center', href: '/research-support/hcw/' },
   ],
   [
-    { name: 'Instruction Support' },
+    {
+      name: 'Instruction Support',
+      submenuTitle: 'instruction-support-submenu-title',
+    },
     { name: 'Library Instruction', href: '/instruction/library-instruction/' },
     {
       name: 'Information Literacy Modules',
@@ -52,7 +58,7 @@ const ResearchMenu = [
     { name: 'Learning Object Repository', href: '/instruction/lore/' },
   ],
   [
-    { name: 'Creation' },
+    { name: 'Creation', submenuTitle: 'create-submenu-title' },
     { name: 'MakerSpace', href: '/creation/makerspace/' },
     { name: 'Digital Scholarship', href: '/creation/digital-scholarship/' },
     { name: 'Scholarly Commons', href: '/creation/scholarly-commons/' },
