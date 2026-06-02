@@ -674,7 +674,7 @@ address {
     color: #c3142d!important;
     font-weight: bold;
     padding: 7px 15px!important;
-    margin:-0.25em 0 0 0!important;
+    margin: 0em 0 0 0!important;
 }
 
 
@@ -792,7 +792,7 @@ address {
   border-bottom: 1px solid #ccc!important;
   background-color: #eee;
   border-radius: 4px 4px 0 0;
-  padding: 5px 15px 3px 15px;
+  padding: 0 0;
   margin: 0 0px -1px 10px; 
 }
 
@@ -909,7 +909,12 @@ div.s-lg-col-boxes h2.s-lib-box-title {
 }
 
 .s-lib-box-content ul.nav-tabs li {padding:0.35em 0.25em;}
-.tab-content {padding: 1.5em 1.75em 1em 1.75em !important;}
+.tab-content {
+     padding: 1.5em 1.75em 1em 1.75em !important;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: -0.5rem 0 1rem 0;
+}
 
 /*---------Oxford proactive chat box----------*/
 div#s-lg-box-18909832 {
@@ -948,7 +953,7 @@ div#s-lg-box-19004034 h2 {
 }
 
 div.s-lib-box-content {
-  padding: 5px 15px;
+  padding: 15px 20px 15px 20px;
 }
 
 /*   ul#s-lg-page-prevnext.pager li.next a,
@@ -1599,7 +1604,7 @@ div.sidebar-box h2 {
   }
 
   .s-lib-box-container {
-    margin: 0em 1em;
+    margin: 0em 0 0.75em 0;
   }
 }
 
