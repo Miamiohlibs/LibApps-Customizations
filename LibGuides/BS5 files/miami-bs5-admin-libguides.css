@@ -22,10 +22,8 @@
     display: block;
     border: 1px solid transparent;
     border-radius: 4px;
-    background-color: #e0e0e0;
     color: #c3142d!important;
     font-weight: bold;
-    padding: 7px 15px!important;
     margin: 0em 0 0 0!important;
 }
 
@@ -140,7 +138,7 @@ li.nav-item {
   border-bottom: 1px solid #fff!important;
     background-color: #fff;
   border-radius: 4px 4px 0 0;
-  padding: 5px 15px 3px 15px;
+  
   margin: 0 0px -1px 10px; 
 }
 
@@ -151,10 +149,14 @@ li.nav-item {
   border-bottom: 1px solid #ccc!important;
   background-color: #eee;
   border-radius: 4px 4px 0 0;
-  padding: 5px 15px 3px 15px;
+ 
   margin: 0 0px -1px 10px; 
 }
 
+.s-lib-box-container {
+  padding: 0px 0px 0px 0px !important;
+    margin: 0em 0 0.75em 0;
+}
 
 
 #s-lg-guide-tabs > .nav {
